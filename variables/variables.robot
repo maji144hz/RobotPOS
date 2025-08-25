@@ -8,11 +8,11 @@ ${BROWSER}                   chrome
 ${TIMEOUT}                   20s
 ${SCREEN_DIR}                screenshots
 
-# --- Common spinners/dialogs (เผื่อหน้าไหนมี) ---
+# --- Common spinners/dialogs  ---
 ${SPINNERS}                  css=.ant-spin,.loading,.v-overlay--active,.swal2-container
 ${SWAL_CONFIRM}              css=button.swal2-confirm
 
-# --- Products URLs/Locators (ที่ TC1001 ใช้) ---
+# --- Products URLs/Locators  ---
 ${PRODUCT_LIST_URL}          ${BASE_URL}/product
 ${CREATE_URL}                ${BASE_URL}/products/create-product
 ${BTN_ADD_PRODUCT}           id=stock-add-product-button
