@@ -1,0 +1,906 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.1 (Python 3.13.5 on win32)" generated="2025-08-26T02:54:22.541943" rpa="false" schemaversion="5">
+<suite id="s1" name="TC1008" source="E:\มหาลัย\โปรเจค\InvisRobot\products_tests\TC1008.robot">
+<kw name="Open Browser To Login Page" owner="resource" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:22.808213" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173/'.</msg>
+<arg>${LOGIN URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-08-26T02:54:22.807893" elapsed="2.113154"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-08-26T02:54:24.921288" elapsed="0.021672"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>${DELAY}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2025-08-26T02:54:24.943108" elapsed="0.000233"/>
+</kw>
+<kw name="Login Page Should Be Open" owner="resource">
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:25.048530" level="INFO">Page title is 'POSSIBLE'.</msg>
+<arg>POSSIBLE</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2025-08-26T02:54:24.943673" elapsed="0.104957"/>
+</kw>
+<status status="PASS" start="2025-08-26T02:54:24.943509" elapsed="0.105205"/>
+</kw>
+<status status="PASS" start="2025-08-26T02:54:22.806978" elapsed="2.241783"/>
+</kw>
+<test id="s1-t1" name="เพิ่มสินค้า TC1001" line="14">
+<kw name="Login Using Resource" type="SETUP">
+<kw name="Go To Login Page" owner="resource">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:25.049774" level="INFO">Opening url 'http://localhost:5173/'</msg>
+<arg>${LOGIN URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-08-26T02:54:25.049684" elapsed="0.317101"/>
+</kw>
+<kw name="Login Page Should Be Open" owner="resource">
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:25.469939" level="INFO">Page title is 'POSSIBLE'.</msg>
+<arg>POSSIBLE</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2025-08-26T02:54:25.367195" elapsed="0.102907"/>
+</kw>
+<status status="PASS" start="2025-08-26T02:54:25.366981" elapsed="0.103249"/>
+</kw>
+<status status="PASS" start="2025-08-26T02:54:25.049540" elapsed="0.420738"/>
+</kw>
+<kw name="Input Username" owner="resource">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=input[name='username']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:25.470831" elapsed="0.213343"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:25.684545" level="INFO">Typing text '1' into text field 'css=input[name='username']'.</msg>
+<arg>css=input[name='username']</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:25.684330" elapsed="0.384893"/>
+</kw>
+<arg>${VALID USER}</arg>
+<status status="PASS" start="2025-08-26T02:54:25.470473" elapsed="0.598855"/>
+</kw>
+<kw name="Input Password" owner="resource">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=input[name='password']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:26.069714" elapsed="0.211629"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:26.281694" level="INFO">Typing text '123' into text field 'css=input[name='password']'.</msg>
+<arg>css=input[name='password']</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:26.281497" elapsed="0.349823"/>
+</kw>
+<arg>${VALID PASSWORD}</arg>
+<status status="PASS" start="2025-08-26T02:54:26.069473" elapsed="0.561947"/>
+</kw>
+<kw name="Submit Credentials" owner="resource">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=button[type='submit']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:26.631866" elapsed="0.210974"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:26.843159" level="INFO">Clicking button 'css=button[type='submit']'.</msg>
+<arg>css=button[type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:26.842997" elapsed="0.556770"/>
+</kw>
+<status status="PASS" start="2025-08-26T02:54:26.631555" elapsed="0.768322"/>
+</kw>
+<kw name="Welcome Page Should Be Open" owner="resource">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:27.523635" level="INFO">Current location is 'http://localhost:5173/'.</msg>
+<arg>${WELCOME URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-08-26T02:54:27.400834" elapsed="0.122976"/>
+</kw>
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:27.630034" level="INFO">Page title is 'POSSIBLE'.</msg>
+<arg>POSSIBLE</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2025-08-26T02:54:27.523945" elapsed="0.106189"/>
+</kw>
+<status status="PASS" start="2025-08-26T02:54:27.400013" elapsed="0.230194"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-26T02:54:27.831017" level="INFO">Slept 200 milliseconds.</msg>
+<arg>0.2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-26T02:54:27.630312" elapsed="0.200902"/>
+</kw>
+<status status="PASS" start="2025-08-26T02:54:25.049331" elapsed="2.782238"/>
+</kw>
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2025-08-26T02:54:27.833374" level="INFO" html="true">Directory '&lt;a href="file://E:\มหาลัย\โปรเจค\InvisRobot\screenshots"&gt;E:\มหาลัย\โปรเจค\InvisRobot\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREEN_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2025-08-26T02:54:27.832428" elapsed="0.001035"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:27.833858" level="INFO">Opening url 'http://localhost:5173/product'</msg>
+<arg>${PRODUCT_LIST_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-08-26T02:54:27.833699" elapsed="0.204852"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${BTN_ADD_PRODUCT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:28.038879" elapsed="0.212392"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:28.251865" level="INFO">Clicking element 'id=stock-add-product-button'.</msg>
+<arg>${BTN_ADD_PRODUCT}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:28.251601" elapsed="0.272736"/>
+</kw>
+<kw name="Wait Table Idle" owner="products_keywords">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Wait Until Element Is Not Visible" owner="SeleniumLibrary">
+<arg>${SPINNERS}</arg>
+<arg>6s</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:28.525205" elapsed="0.119933"/>
+</kw>
+<arg>Wait Until Element Is Not Visible</arg>
+<arg>${SPINNERS}</arg>
+<arg>6s</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-08-26T02:54:28.525036" elapsed="0.122704"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-26T02:54:28.948471" level="INFO">Slept 300 milliseconds.</msg>
+<arg>0.3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-26T02:54:28.648099" elapsed="0.300496"/>
+</kw>
+<status status="PASS" start="2025-08-26T02:54:28.524735" elapsed="0.423967"/>
+</kw>
+<kw name="Ensure On Create Product Page" owner="products_keywords">
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:29.054988" level="INFO">${loc} = http://localhost:5173/products/create-product</msg>
+<var>${loc}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-08-26T02:54:28.949822" elapsed="0.105224"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${loc}</arg>
+<arg>/products/create-product</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-08-26T02:54:29.055852" elapsed="0.000187"/>
+</kw>
+<msg time="2025-08-26T02:54:29.056163" level="INFO">${on_create} = True</msg>
+<var>${on_create}</var>
+<arg>Should Contain</arg>
+<arg>${loc}</arg>
+<arg>/products/create-product</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-26T02:54:29.055564" elapsed="0.000630"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${on_create}">
+<kw name="Go To" owner="SeleniumLibrary">
+<arg>${CREATE_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="NOT RUN" start="2025-08-26T02:54:29.056558" elapsed="0.000030"/>
+</kw>
+<kw name="Wait Table Idle" owner="products_keywords">
+<status status="NOT RUN" start="2025-08-26T02:54:29.056733" elapsed="0.000033"/>
+</kw>
+<status status="NOT RUN" start="2025-08-26T02:54:29.056318" elapsed="0.000484"/>
+</branch>
+<status status="PASS" start="2025-08-26T02:54:29.056284" elapsed="0.000565"/>
+</if>
+<status status="PASS" start="2025-08-26T02:54:28.949549" elapsed="0.107358"/>
+</kw>
+<kw name="Upload Product Image" owner="products_keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${UPLOAD_CLICK_AREA}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:29.150054" elapsed="0.219593"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${UPLOAD_CLICK_AREA}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2025-08-26T02:54:29.369875" elapsed="0.467773"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:29.838128" level="INFO">Clicking element 'xpath=//*[contains(@class,'flex') and contains(@class,'flex-col') and contains(.,'เพิ่มรูปภาพ')] | //div[.//span[contains(normalize-space(.),'เพิ่มรูปภาพ')]]'.</msg>
+<arg>${UPLOAD_CLICK_AREA}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:29.837874" elapsed="0.240063"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-26T02:54:30.378671" level="INFO">Slept 300 milliseconds.</msg>
+<arg>0.3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-26T02:54:30.078152" elapsed="0.300644"/>
+</kw>
+<kw name="Get First Present Locator" owner="products_keywords">
+<for flavor="IN">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:30.489866" level="INFO">Current page contains element 'xpath=//input[@type='file' and (contains(@id,'image') or contains(@name,'image') or contains(@accept,'image'))]'.</msg>
+<arg>${loc}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2025-08-26T02:54:30.381656" elapsed="0.108347"/>
+</kw>
+<msg time="2025-08-26T02:54:30.490160" level="INFO">${ok} = True</msg>
+<var>${ok}</var>
+<arg>Page Should Contain Element</arg>
+<arg>${loc}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-26T02:54:30.381499" elapsed="0.109074"/>
+</kw>
+<if>
+<branch type="IF" condition="${ok}">
+<return>
+<value>${loc}</value>
+<status status="PASS" start="2025-08-26T02:54:30.490842" elapsed="0.000065"/>
+</return>
+<status status="PASS" start="2025-08-26T02:54:30.490720" elapsed="0.000244"/>
+</branch>
+<status status="PASS" start="2025-08-26T02:54:30.490685" elapsed="0.000325"/>
+</if>
+<var name="${loc}">xpath=//input[@type='file' and (contains(@id,'image') or contains(@name,'image') or contains(@accept,'image'))]</var>
+<status status="PASS" start="2025-08-26T02:54:30.381370" elapsed="0.109679"/>
+</iter>
+<var>${loc}</var>
+<value>@{locators}</value>
+<status status="PASS" start="2025-08-26T02:54:30.381134" elapsed="0.109978"/>
+</for>
+<kw name="Fail" owner="BuiltIn">
+<arg>ไม่พบ input[type=file] สำหรับอัปโหลดรูปสินค้า</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-08-26T02:54:30.491267" elapsed="0.000032"/>
+</kw>
+<msg time="2025-08-26T02:54:30.491451" level="INFO">${file_input} = xpath=//input[@type='file' and (contains(@id,'image') or contains(@name,'image') or contains(@accept,'image'))]</msg>
+<var>${file_input}</var>
+<arg>${INPUT_FILE_OPT1}</arg>
+<arg>${INPUT_FILE_OPT2}</arg>
+<status status="PASS" start="2025-08-26T02:54:30.379121" elapsed="0.112361"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:30.492206" level="INFO">Executing JavaScript:
+arguments[0].style.display='block';xpath=//input[@type='file' and (contains(@id,'image') or contains(@name,'image') or contains(@accept,'image'))]
+Without any arguments.</msg>
+<msg time="2025-08-26T02:54:30.799888" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-32.png"&gt;&lt;img src="selenium-screenshot-32.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-08-26T02:54:30.800132" level="FAIL">JavascriptException: Message: javascript error: Unexpected token '}'
+  (Session info: chrome=139.0.7258.139)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6677178d5+2802741]
+	GetHandleVerifier [0x0x7ff66747eb70+79568]
+	(No symbol) [0x0x7ff66721c0fa]
+	(No symbol) [0x0x7ff667223abd]
+	(No symbol) [0x0x7ff667226e61]
+	(No symbol) [0x0x7ff6672c415b]
+	(No symbol) [0x0x7ff66729ac8a]
+	(No symbol) [0x0x7ff6672c2e24]
+	(No symbol) [0x0x7ff66729aa63]
+	(No symbol) [0x0x7ff667263c91]
+	(No symbol) [0x0x7ff667264a23]
+	GetHandleVerifier [0x0x7ff667742ced+2979917]
+	GetHandleVerifier [0x0x7ff66773d0f3+2956371]
+	GetHandleVerifier [0x0x7ff66775acbd+3078173]
+	GetHandleVerifier [0x0x7ff66749836e+184014]
+	GetHandleVerifier [0x0x7ff6674a024f+216495]
+	GetHandleVerifier [0x0x7ff6674870c4+113700]
+	GetHandleVerifier [0x0x7ff667487279+114137]
+	GetHandleVerifier [0x0x7ff66746df78+10968]
+	BaseThreadInitThunk [0x0x7ffa4e4fe8d7+23]
+	RtlUserThreadStart [0x0x7ffa4f8dc34c+44]
+</msg>
+<arg>arguments[0].style.display='block';</arg>
+<arg>${file_input}</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="FAIL" start="2025-08-26T02:54:30.491749" elapsed="0.347561">JavascriptException: Message: javascript error: Unexpected token '}'
+  (Session info: chrome=139.0.7258.139)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6677178d5+2802741]
+	GetHandleVerifier [0x0x7ff66747eb70+79568]
+	(No symbol) [0x0x7ff66721c0fa]
+	(No symbol) [0x0x7ff667223abd]
+	(No symbol) [0x0x7ff667226e61]
+	(No symbol) [0x0x7ff6672c415b]
+	(No symbol) [0x0x7ff66729ac8a]
+	(No symbol) [0x0x7ff6672c2e24]
+	(No symbol) [0x0x7ff66729aa63]
+	(No symbol) [0x0x7ff667263c91]
+	(No symbol) [0x0x7ff667264a23]
+	GetHandleVerifier [0x0x7ff667742ced+2979917]
+	GetHandleVerifier [0x0x7ff66773d0f3+2956371]
+	GetHandleVerifier [0x0x7ff66775acbd+3078173]
+	GetHandleVerifier [0x0x7ff66749836e+184014]
+	GetHandleVerifier [0x0x7ff6674a024f+216495]
+	GetHandleVerifier [0x0x7ff6674870c4+113700]
+	GetHandleVerifier [0x0x7ff667487279+114137]
+	GetHandleVerifier [0x0x7ff66746df78+10968]
+	BaseThreadInitThunk [0x0x7ffa4e4fe8d7+23]
+	RtlUserThreadStart [0x0x7ffa4f8dc34c+44]
+</status>
+</kw>
+<arg>Execute Javascript</arg>
+<arg>arguments[0].style.display='block';</arg>
+<arg>${file_input}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-08-26T02:54:30.491596" elapsed="0.347990"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:30.849169" level="INFO">Executing JavaScript:
+arguments[0].removeAttribute('hidden');xpath=//input[@type='file' and (contains(@id,'image') or contains(@name,'image') or contains(@accept,'image'))]
+Without any arguments.</msg>
+<msg time="2025-08-26T02:54:31.069743" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-33.png"&gt;&lt;img src="selenium-screenshot-33.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-08-26T02:54:31.069940" level="FAIL">JavascriptException: Message: javascript error: Unexpected token '}'
+  (Session info: chrome=139.0.7258.139)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6677178d5+2802741]
+	GetHandleVerifier [0x0x7ff66747eb70+79568]
+	(No symbol) [0x0x7ff66721c0fa]
+	(No symbol) [0x0x7ff667223abd]
+	(No symbol) [0x0x7ff667226e61]
+	(No symbol) [0x0x7ff6672c415b]
+	(No symbol) [0x0x7ff66729ac8a]
+	(No symbol) [0x0x7ff6672c2e24]
+	(No symbol) [0x0x7ff66729aa63]
+	(No symbol) [0x0x7ff667263c91]
+	(No symbol) [0x0x7ff667264a23]
+	GetHandleVerifier [0x0x7ff667742ced+2979917]
+	GetHandleVerifier [0x0x7ff66773d0f3+2956371]
+	GetHandleVerifier [0x0x7ff66775acbd+3078173]
+	GetHandleVerifier [0x0x7ff66749836e+184014]
+	GetHandleVerifier [0x0x7ff6674a024f+216495]
+	GetHandleVerifier [0x0x7ff6674870c4+113700]
+	GetHandleVerifier [0x0x7ff667487279+114137]
+	GetHandleVerifier [0x0x7ff66746df78+10968]
+	BaseThreadInitThunk [0x0x7ffa4e4fe8d7+23]
+	RtlUserThreadStart [0x0x7ffa4f8dc34c+44]
+</msg>
+<arg>arguments[0].removeAttribute('hidden');</arg>
+<arg>${file_input}</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="FAIL" start="2025-08-26T02:54:30.839944" elapsed="0.231733">JavascriptException: Message: javascript error: Unexpected token '}'
+  (Session info: chrome=139.0.7258.139)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6677178d5+2802741]
+	GetHandleVerifier [0x0x7ff66747eb70+79568]
+	(No symbol) [0x0x7ff66721c0fa]
+	(No symbol) [0x0x7ff667223abd]
+	(No symbol) [0x0x7ff667226e61]
+	(No symbol) [0x0x7ff6672c415b]
+	(No symbol) [0x0x7ff66729ac8a]
+	(No symbol) [0x0x7ff6672c2e24]
+	(No symbol) [0x0x7ff66729aa63]
+	(No symbol) [0x0x7ff667263c91]
+	(No symbol) [0x0x7ff667264a23]
+	GetHandleVerifier [0x0x7ff667742ced+2979917]
+	GetHandleVerifier [0x0x7ff66773d0f3+2956371]
+	GetHandleVerifier [0x0x7ff66775acbd+3078173]
+	GetHandleVerifier [0x0x7ff66749836e+184014]
+	GetHandleVerifier [0x0x7ff6674a024f+216495]
+	GetHandleVerifier [0x0x7ff6674870c4+113700]
+	GetHandleVerifier [0x0x7ff667487279+114137]
+	GetHandleVerifier [0x0x7ff66746df78+10968]
+	BaseThreadInitThunk [0x0x7ffa4e4fe8d7+23]
+	RtlUserThreadStart [0x0x7ffa4f8dc34c+44]
+</status>
+</kw>
+<arg>Execute Javascript</arg>
+<arg>arguments[0].removeAttribute('hidden');</arg>
+<arg>${file_input}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-08-26T02:54:30.839765" elapsed="0.232041"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:31.073274" level="INFO">Sending E:\มหาลัย\โปรเจค\Robot_Pos\photo\น้ำยาล้างจาน.jpg to browser.</msg>
+<arg>${file_input}</arg>
+<arg>${filepath}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:31.071964" elapsed="0.226030"/>
+</kw>
+<kw name="Wait Table Idle" owner="products_keywords">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Wait Until Element Is Not Visible" owner="SeleniumLibrary">
+<arg>${SPINNERS}</arg>
+<arg>6s</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:31.298701" elapsed="0.158824"/>
+</kw>
+<arg>Wait Until Element Is Not Visible</arg>
+<arg>${SPINNERS}</arg>
+<arg>6s</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-08-26T02:54:31.298550" elapsed="0.159111"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-26T02:54:31.764410" level="INFO">Slept 300 milliseconds.</msg>
+<arg>0.3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-26T02:54:31.457831" elapsed="0.306717"/>
+</kw>
+<status status="PASS" start="2025-08-26T02:54:31.298268" elapsed="0.466451"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-26T02:54:32.268605" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-26T02:54:31.764867" elapsed="0.503865"/>
+</kw>
+<arg>${PRODUCT_IMAGE_PATH}</arg>
+<status status="PASS" start="2025-08-26T02:54:29.149567" elapsed="3.119281"/>
+</kw>
+<kw name="Type" owner="products_keywords">
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-08-26T02:54:32.276501" level="INFO">Length is 28.</msg>
+<arg>${locator}</arg>
+<arg>Locator ว่าง: ตรวจสอบตัวแปร locator/ไฟล์ variables.robot</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-08-26T02:54:32.276327" elapsed="0.000233"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:32.276683" elapsed="0.242422"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:32.519346" elapsed="0.550248"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:33.071366" level="INFO">Typing text 'น้ำยาล้างจาน' into text field 'id=create-product-name-input'.</msg>
+<arg>locator=${locator}</arg>
+<arg>text=${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:33.069829" elapsed="0.425080"/>
+</kw>
+<arg>${INPUT_NAME}</arg>
+<arg>น้ำยาล้างจาน</arg>
+<status status="PASS" start="2025-08-26T02:54:32.275960" elapsed="1.219712"/>
+</kw>
+<kw name="Type" owner="products_keywords">
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-08-26T02:54:33.499596" level="INFO">Length is 35.</msg>
+<arg>${locator}</arg>
+<arg>Locator ว่าง: ตรวจสอบตัวแปร locator/ไฟล์ variables.robot</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-08-26T02:54:33.499424" elapsed="0.000230"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:33.499776" elapsed="0.375728"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:33.875763" elapsed="0.218489"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:34.094826" level="INFO">Typing text 'น้ำยาล้างจานของดี' into text field 'id=create-product-description-input'.</msg>
+<arg>locator=${locator}</arg>
+<arg>text=${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:34.094479" elapsed="0.533442"/>
+</kw>
+<arg>${INPUT_DESC}</arg>
+<arg>น้ำยาล้างจานของดี</arg>
+<status status="PASS" start="2025-08-26T02:54:33.499059" elapsed="1.129068"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${SELECT_CATEGORY}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:34.628844" elapsed="0.255425"/>
+</kw>
+<kw name="Select From List By Value" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:34.949669" level="INFO">Selecting options from selection list 'id=create-product-category-select' by value 6855a82ec16f3c50f07fc142.</msg>
+<arg>${SELECT_CATEGORY}</arg>
+<arg>${CATEGORY_VALUE}</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<status status="PASS" start="2025-08-26T02:54:34.949352" elapsed="1.395511"/>
+</kw>
+<kw name="Type" owner="products_keywords">
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-08-26T02:54:36.454336" level="INFO">Length is 14.</msg>
+<arg>${locator}</arg>
+<arg>Locator ว่าง: ตรวจสอบตัวแปร locator/ไฟล์ variables.robot</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-08-26T02:54:36.454166" elapsed="0.000229"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:36.454527" elapsed="0.249851"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:36.704599" elapsed="0.290205"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:36.995633" level="INFO">Typing text '0150758695519' into text field 'id=barcodePack'.</msg>
+<arg>locator=${locator}</arg>
+<arg>text=${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:36.995293" elapsed="0.528182"/>
+</kw>
+<arg>${INPUT_BARCODE_PACK}</arg>
+<arg>0150758695519</arg>
+<status status="PASS" start="2025-08-26T02:54:36.453783" elapsed="1.069856"/>
+</kw>
+<kw name="Type" owner="products_keywords">
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-08-26T02:54:37.525224" level="INFO">Length is 14.</msg>
+<arg>${locator}</arg>
+<arg>Locator ว่าง: ตรวจสอบตัวแปร locator/ไฟล์ variables.robot</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-08-26T02:54:37.524808" elapsed="0.000489"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:37.525452" elapsed="0.237998"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:37.763807" elapsed="0.230857"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:37.995386" level="INFO">Typing text '0646818912454' into text field 'id=barcodeUnit'.</msg>
+<arg>locator=${locator}</arg>
+<arg>text=${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:37.994968" elapsed="0.447503"/>
+</kw>
+<arg>${INPUT_BARCODE_UNIT}</arg>
+<arg>0646818912454</arg>
+<status status="PASS" start="2025-08-26T02:54:37.524385" elapsed="0.918248"/>
+</kw>
+<kw name="Type" owner="products_keywords">
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-08-26T02:54:38.447550" level="INFO">Length is 11.</msg>
+<arg>${locator}</arg>
+<arg>Locator ว่าง: ตรวจสอบตัวแปร locator/ไฟล์ variables.robot</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-08-26T02:54:38.447342" elapsed="0.000276"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:38.447761" elapsed="0.239800"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:38.687782" elapsed="0.297919"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:38.986242" level="INFO">Typing text '12' into text field 'id=packSize'.</msg>
+<arg>locator=${locator}</arg>
+<arg>text=${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:38.985927" elapsed="0.356511"/>
+</kw>
+<arg>${INPUT_PACK_SIZE}</arg>
+<arg>12</arg>
+<status status="PASS" start="2025-08-26T02:54:38.446897" elapsed="0.895693"/>
+</kw>
+<kw name="Type" owner="products_keywords">
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-08-26T02:54:39.343876" level="INFO">Length is 43.</msg>
+<arg>${locator}</arg>
+<arg>Locator ว่าง: ตรวจสอบตัวแปร locator/ไฟล์ variables.robot</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-08-26T02:54:39.343713" elapsed="0.000217"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:39.344049" elapsed="0.233668"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:39.577940" elapsed="0.695815"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:40.274305" level="INFO">Typing text '10' into text field 'id=create-product-sellingpriceperunit-input'.</msg>
+<arg>locator=${locator}</arg>
+<arg>text=${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:40.273986" elapsed="0.408631"/>
+</kw>
+<arg>${INPUT_PRICE_UNIT}</arg>
+<arg>10</arg>
+<status status="PASS" start="2025-08-26T02:54:39.343369" elapsed="1.339401"/>
+</kw>
+<kw name="Type" owner="products_keywords">
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-08-26T02:54:40.987613" level="INFO">Length is 43.</msg>
+<arg>${locator}</arg>
+<arg>Locator ว่าง: ตรวจสอบตัวแปร locator/ไฟล์ variables.robot</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-08-26T02:54:40.987447" elapsed="0.000227"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:40.987796" elapsed="0.499336"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:41.487355" elapsed="0.239787"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:41.727665" level="INFO">Typing text '120' into text field 'id=create-product-sellingpriceperpack-input'.</msg>
+<arg>locator=${locator}</arg>
+<arg>text=${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:41.727356" elapsed="0.385755"/>
+</kw>
+<arg>${INPUT_PRICE_PACK}</arg>
+<arg>120</arg>
+<status status="PASS" start="2025-08-26T02:54:40.987070" elapsed="1.126380"/>
+</kw>
+<kw name="Type" owner="products_keywords">
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-08-26T02:54:42.117453" level="INFO">Length is 42.</msg>
+<arg>${locator}</arg>
+<arg>Locator ว่าง: ตรวจสอบตัวแปร locator/ไฟล์ variables.robot</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-08-26T02:54:42.116727" elapsed="0.000819"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:42.117691" elapsed="0.506427"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:42.624348" elapsed="0.253466"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:42.878723" level="INFO">Typing text '120' into text field 'xpath=//input[@name='initialLot.quantity']'.</msg>
+<arg>locator=${locator}</arg>
+<arg>text=${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:42.878181" elapsed="0.374014"/>
+</kw>
+<arg>${INPUT_INIT_QTY}</arg>
+<arg>120</arg>
+<status status="PASS" start="2025-08-26T02:54:42.114596" elapsed="1.137750"/>
+</kw>
+<kw name="Type" owner="products_keywords">
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-08-26T02:54:43.254171" level="INFO">Length is 47.</msg>
+<arg>${locator}</arg>
+<arg>Locator ว่าง: ตรวจสอบตัวแปร locator/ไฟล์ variables.robot</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-08-26T02:54:43.253999" elapsed="0.000230"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:43.254350" elapsed="0.247223"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:43.501791" elapsed="0.455002"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:43.957332" level="INFO">Typing text '6' into text field 'xpath=//input[@name='initialLot.purchasePrice']'.</msg>
+<arg>locator=${locator}</arg>
+<arg>text=${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:43.957020" elapsed="0.376796"/>
+</kw>
+<arg>${INPUT_INIT_PURCHASE}</arg>
+<arg>6</arg>
+<status status="PASS" start="2025-08-26T02:54:43.253632" elapsed="1.080330"/>
+</kw>
+<kw name="Type" owner="products_keywords">
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-08-26T02:54:44.335580" level="INFO">Length is 48.</msg>
+<arg>${locator}</arg>
+<arg>Locator ว่าง: ตรวจสอบตัวแปร locator/ไฟล์ variables.robot</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-08-26T02:54:44.335412" elapsed="0.000226"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:44.335759" elapsed="0.231738"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:44.567737" elapsed="0.221593"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:44.790314" level="INFO">Typing text '2025-09-11' into text field 'xpath=//input[@name='initialLot.expirationDate']'.</msg>
+<arg>locator=${locator}</arg>
+<arg>text=${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:44.789556" elapsed="0.690531"/>
+</kw>
+<arg>${INPUT_INIT_EXPDATE}</arg>
+<arg>${EXPDATE_VALUE}</arg>
+<status status="PASS" start="2025-08-26T02:54:44.335022" elapsed="1.145212"/>
+</kw>
+<kw name="Click Save Product" owner="products_keywords">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:45.481686" level="INFO">Clicking element 'id=create-product-submit-button'.</msg>
+<arg>${BTN_SAVE_OPT1}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:45.481494" elapsed="0.295959"/>
+</kw>
+<msg time="2025-08-26T02:54:45.777640" level="INFO">${clicked} = True</msg>
+<var>${clicked}</var>
+<arg>Click Element</arg>
+<arg>${BTN_SAVE_OPT1}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-26T02:54:45.481335" elapsed="0.296341"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2025-08-26T02:54:45.778146" level="INFO">Returning from the enclosing user keyword.</msg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2025-08-26T02:54:45.778068" elapsed="0.000142"/>
+</kw>
+<arg>${clicked}</arg>
+<arg>Return From Keyword</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-08-26T02:54:45.777854" elapsed="0.000413"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<var>${has2}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${BTN_SAVE_OPT2}</arg>
+<arg>2s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" start="2025-08-26T02:54:45.778381" elapsed="0.000029"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${has2}</arg>
+<arg>Click Element</arg>
+<arg>${BTN_SAVE_OPT2}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-08-26T02:54:45.778519" elapsed="0.000027"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${has2}</arg>
+<arg>Return From Keyword</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-08-26T02:54:45.778650" elapsed="0.000026"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<var>${has3}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${BTN_SAVE_OPT3}</arg>
+<arg>2s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" start="2025-08-26T02:54:45.778774" elapsed="0.000026"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${has3}</arg>
+<arg>Click Element</arg>
+<arg>${BTN_SAVE_OPT3}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-08-26T02:54:45.778909" elapsed="0.000025"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${has3}</arg>
+<arg>Return From Keyword</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-08-26T02:54:45.779034" elapsed="0.000026"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>ไม่พบปุ่มบันทึกสินค้า (โปรดตรวจสอบ locator ของปุ่มบันทึกในหน้า)</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-08-26T02:54:45.779149" elapsed="0.000025"/>
+</kw>
+<status status="PASS" start="2025-08-26T02:54:45.481011" elapsed="0.363300"/>
+</kw>
+<kw name="Click If Exists" owner="products_keywords">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>3s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:45.850826" elapsed="0.369870"/>
+</kw>
+<msg time="2025-08-26T02:54:46.220884" level="INFO">${ok} = True</msg>
+<var>${ok}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${locator}</arg>
+<arg>3s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-26T02:54:45.850624" elapsed="0.370296"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-08-26T02:54:46.221489" level="INFO">Clicking element 'id=create-product-cancel-button'.</msg>
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-26T02:54:46.221301" elapsed="0.339966"/>
+</kw>
+<arg>${ok}</arg>
+<arg>Click Element</arg>
+<arg>${locator}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-08-26T02:54:46.221090" elapsed="0.340464"/>
+</kw>
+<arg>${BTN_CANCEL_PRODUCT}</arg>
+<status status="PASS" start="2025-08-26T02:54:45.849308" elapsed="0.712432"/>
+</kw>
+<kw name="Wait Table Idle" owner="products_keywords">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Wait Until Element Is Not Visible" owner="SeleniumLibrary">
+<arg>${SPINNERS}</arg>
+<arg>6s</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" start="2025-08-26T02:54:46.563494" elapsed="0.106698"/>
+</kw>
+<arg>Wait Until Element Is Not Visible</arg>
+<arg>${SPINNERS}</arg>
+<arg>6s</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-08-26T02:54:46.563216" elapsed="0.107292"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-26T02:54:46.971319" level="INFO">Slept 300 milliseconds.</msg>
+<arg>0.3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-26T02:54:46.670743" elapsed="0.300705"/>
+</kw>
+<status status="PASS" start="2025-08-26T02:54:46.562580" elapsed="0.408980"/>
+</kw>
+<status status="PASS" start="2025-08-26T02:54:25.048822" elapsed="21.923433"/>
+</test>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-08-26T02:54:46.977097" elapsed="3.017056"/>
+</kw>
+<status status="PASS" start="2025-08-26T02:54:22.556831" elapsed="27.437396"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="TC1008" id="s1" pass="1" fail="0" skip="0">TC1008</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
