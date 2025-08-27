@@ -11,7 +11,7 @@ Test Setup        Login Using Resource
 
 
 *** Test Cases ***
-เพิ่มสินค้า TC1001
+เพิ่มสินค้า TC1005
     Create Directory                     ${SCREEN_DIR}
 
     Go To                               ${PRODUCT_LIST_URL}

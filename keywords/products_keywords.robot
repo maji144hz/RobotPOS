@@ -3,7 +3,7 @@ Library    SeleniumLibrary
 Library    OperatingSystem
 
 *** Keywords ***
-# พิมพ์แบบ robust: เช็ค locator ไม่ว่าง + รอ element พร้อม + เคลียร์ก่อนพิมพ์
+
 Type
     [Arguments]    ${locator}    ${text}
     Should Not Be Empty    ${locator}    Locator ว่าง: ตรวจสอบตัวแปร locator/ไฟล์ variables.robot
@@ -53,7 +53,7 @@ Click Save Product
     ${has3}=    Run Keyword And Return Status    Wait Until Page Contains Element    ${BTN_SAVE_OPT3}    2s
     Run Keyword If    ${has3}    Click Element    ${BTN_SAVE_OPT3}
     Run Keyword If    ${has3}    Return From Keyword
-    Fail    ไม่พบปุ่มบันทึกสินค้า (โปรดตรวจสอบ locator ของปุ่มบันทึกในหน้า)
+    Fail    ไม่พบปุ่มบันทึกสินค้า 
 
 Click If Exists
     [Arguments]    ${locator}

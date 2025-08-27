@@ -39,7 +39,7 @@ ${INPUT_PRICE_PACK}          id=create-product-sellingpriceperpack-input
 ${INPUT_INIT_QTY}            xpath=//input[@name='initialLot.quantity']
 ${INPUT_INIT_PURCHASE}       xpath=//input[@name='initialLot.purchasePrice']
 ${INPUT_INIT_EXPDATE}        xpath=//input[@name='initialLot.expirationDate']
-${EXPDATE_VALUE}             2025-09-11
+${EXPDATE_VALUE}             11-09-2024
 
 # --- Save button (fallback หลายแบบ) ---
 ${BTN_SAVE_OPT1}             id=create-product-submit-button

@@ -10,8 +10,7 @@ Suite Teardown    Close All Browsers
 Test Setup        Login Using Resource
 
 
-*** Test Cases ***
-เพิ่มสินค้า TC1001
+*** Test Cases 6
     Create Directory                     ${SCREEN_DIR}
 
     Go To                               ${PRODUCT_LIST_URL}

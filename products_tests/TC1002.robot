@@ -9,8 +9,9 @@ Suite Setup       Open Browser To Login Page
 Suite Teardown    Close All Browsers
 Test Setup        Login Using Resource
 
+
 *** Test Cases ***
-เพิ่มสินค้า TC1002  
+เพิ่มสินค้า TC1002
     Create Directory                     ${SCREEN_DIR}
 
     Go To                               ${PRODUCT_LIST_URL}
@@ -34,7 +35,7 @@ Test Setup        Login Using Resource
     Type    ${INPUT_PRICE_PACK}               120
     Type    ${INPUT_INIT_QTY}                 120
     Type    ${INPUT_INIT_PURCHASE}            6
-    
+    Type    ${INPUT_INIT_EXPDATE}             ${EXPDATE_VALUE}
 
     Click Save Product
     Click If Exists                      ${SWAL_CONFIRM}
