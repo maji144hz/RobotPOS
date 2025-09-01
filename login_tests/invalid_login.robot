@@ -23,15 +23,3 @@ Invalid Username And Password    invalid          whatever
 Empty Username                   ${EMPTY}         ${VALID_PASSWORD}
 Empty Password                   ${VALID_USER}    ${EMPTY}
 Empty Username And Password      ${EMPTY}         ${EMPTY}
-
-*** Keywords ***
-Login With Invalid Credentials Should Fail
-    [Arguments]    ${username}    ${password}
-    Input Username    ${username}
-    Input Password    ${password}
-    Submit Credentials
-    Login Should Have Failed
-
-Login Should Have Failed
-    Location Should Be    ${ERROR_URL}
-    Title Should Be    Error Page

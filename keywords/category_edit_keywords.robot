@@ -56,3 +56,21 @@ Screenshot Row Containing Text
     Scroll Element Into View         ${ROW}
     Create Directory If Not Exists    ${SCREEN_DIR}
     Capture Element Screenshot    ${ROW}    ${SCREEN_DIR}${/}${filename}
+
+# ===== Delete =====
+Click Delete Button
+    Wait Until Page Contains Element    ${BTN_DELETE_SINGLE}    ${TIMEOUT}
+    Scroll Element Into View            ${BTN_DELETE_SINGLE}
+    Click Element                       ${BTN_DELETE_SINGLE}
+    Wait Table Idle
+
+Confirm Delete Dialog
+    ${ok}=    Run Keyword And Return Status    Wait Until Page Contains Element    ${SWAL_CONFIRM}    5s
+    Run Keyword If    ${ok}    Click Element    ${SWAL_CONFIRM}
+    ${ok2}=   Run Keyword And Return Status    Wait Until Page Contains Element    xpath=//button[normalize-space()='ยืนยัน' or normalize-space()='ตกลง' or normalize-space()='OK']    3s
+    Run Keyword If    ${ok2}   Click Element    xpath=//button[normalize-space()='ยืนยัน' or normalize-space()='ตกลง' or normalize-space()='OK']
+    Wait Table Idle
+
+Verify Category Not Exists
+    [Arguments]    ${name}
+    Wait Until Page Does Not Contain    ${name}    ${TIMEOUT}

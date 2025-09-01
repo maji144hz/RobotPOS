@@ -18,9 +18,12 @@ ${BTN_SAVE_CREATE}    xpath=//button[contains(normalize-space(.),'บันท�
 ${SEARCH_CATEGORY}    id=category-search-input
 
 # แก้ไข (Edit)
-${BTN_EDIT_SINGLE}    css=button[title="แก้ไขหมวดหมู่"]
+${BTN_EDIT_SINGLE}    xpath=//button[starts-with(@id,'edit-category-button-')]
 ${EDIT_INPUT}         id=edit-category-name-input
 ${BTN_SAVE_EDIT}      xpath=//button[contains(normalize-space(.),'บันทึกข้อมูล')]
+
+# ลบ (Delete)
+${BTN_DELETE_SINGLE}  xpath=//button[starts-with(@id,'delete-category-button-')]
 
 # ตัวโหลด/แจ้งเตือน (ถ้ามี)
 ${SPINNERS}           css=.ant-spin,.loading,.v-overlay--active

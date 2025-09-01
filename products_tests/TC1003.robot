@@ -12,7 +12,7 @@ Resource          ../keywords/common_keywords.robot
 Resource          ../keywords/products_keywords.robot
 
 *** Test Cases ***
-เพิ่มสินค้า TC1003
+เพิ่มสินค้าแบบกรอกล็อตแต่ไม่กรอกวันหมดอายุ TC1003
     Create Directory                     ${SCREEN_DIR}
     Go To                               ${PRODUCT_LIST_URL}
     Wait Until Element Is Visible        ${BTN_ADD_PRODUCT}    ${TIMEOUT}

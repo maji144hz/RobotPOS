@@ -48,3 +48,26 @@ Screenshot Latest Supplier Row
     Scroll Element Into View         ${ROW}
     Create Directory If Not Exists    ${SCREEN_DIR}
     Capture Element Screenshot    ${ROW}    ${SCREEN_DIR}${/}latest_supplier.png
+
+Click Edit Supplier Button
+    Wait Until Page Contains Element    ${BTN_EDIT_SUPPLIER}    ${TIMEOUT}
+    Scroll Element Into View            ${BTN_EDIT_SUPPLIER}
+    Click Element                       ${BTN_EDIT_SUPPLIER}
+    Wait Table Idle
+
+Click Delete Supplier Button
+    Wait Until Page Contains Element    ${BTN_DELETE_SUPPLIER}    ${TIMEOUT}
+    Scroll Element Into View            ${BTN_DELETE_SUPPLIER}
+    Click Element                       ${BTN_DELETE_SUPPLIER}
+    Wait Table Idle
+
+Confirm Delete Dialog
+    ${ok}=    Run Keyword And Return Status    Wait Until Page Contains Element    ${SWAL_CONFIRM}    5s
+    Run Keyword If    ${ok}    Click Element    ${SWAL_CONFIRM}
+    ${ok2}=   Run Keyword And Return Status    Wait Until Page Contains Element    xpath=//button[normalize-space()='ยืนยัน' or normalize-space()='ตกลง' or normalize-space()='OK']    3s
+    Run Keyword If    ${ok2}   Click Element    xpath=//button[normalize-space()='ยืนยัน' or normalize-space()='ตกลง' or normalize-space()='OK']
+    Wait Table Idle
+
+Verify Supplier Not Exists
+    [Arguments]    ${name}
+    Wait Until Page Does Not Contain    ${name}    ${TIMEOUT}

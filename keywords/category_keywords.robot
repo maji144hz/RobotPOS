@@ -35,3 +35,28 @@ Screenshot Latest Category Row
     Scroll Element Into View         ${ROW}
     Create Directory If Not Exists    ${SCREEN_DIR}
     Capture Element Screenshot    ${ROW}    ${SCREEN_DIR}${/}latest_category.png
+
+# ===== Edit =====
+Click Edit Category Button
+    Wait Until Page Contains Element    xpath=//button[starts-with(@id,'edit-category-button-')]    ${TIMEOUT}
+    Scroll Element Into View            xpath=//button[starts-with(@id,'edit-category-button-')]
+    Click Element                       xpath=//button[starts-with(@id,'edit-category-button-')]
+    Wait Table Idle
+
+# ===== Delete =====
+Click Delete Button
+    Wait Until Page Contains Element    xpath=//button[starts-with(@id,'delete-category-button-')]    ${TIMEOUT}
+    Scroll Element Into View            xpath=//button[starts-with(@id,'delete-category-button-')]
+    Click Element                       xpath=//button[starts-with(@id,'delete-category-button-')]
+    Wait Table Idle
+
+Confirm Delete Dialog
+    ${ok}=    Run Keyword And Return Status    Wait Until Page Contains Element    ${SWAL_CONFIRM}    5s
+    Run Keyword If    ${ok}    Click Element    ${SWAL_CONFIRM}
+    ${ok2}=   Run Keyword And Return Status    Wait Until Page Contains Element    xpath=//button[normalize-space()='ยืนยัน' or normalize-space()='ตกลง' or normalize-space()='OK']    3s
+    Run Keyword If    ${ok2}   Click Element    xpath=//button[normalize-space()='ยืนยัน' or normalize-space()='ตกลง' or normalize-space()='OK']
+    Wait Table Idle
+
+Verify Category Not Exists
+    [Arguments]    ${name}
+    Wait Until Page Does Not Contain    ${name}    ${TIMEOUT}

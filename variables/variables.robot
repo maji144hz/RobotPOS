@@ -15,6 +15,15 @@ ${PRODUCT_LIST_URL}          ${BASE_URL}/product
 ${CREATE_URL}                ${BASE_URL}/products/create-product
 ${BTN_ADD_PRODUCT}           id=stock-add-product-button
 
+# --- Search and Edit ---
+${STOCK_SEARCH_INPUT}        id=stock-search-input
+${BTN_EDIT_PRODUCT}          css=button.flex-1.bg-orange-50.text-orange-600
+
+# --- Edit Product Form Fields ---
+${EDIT_INPUT_NAME}           id=edit-product-name-input
+${EDIT_INPUT_DESC}           id=edit-product-description-input
+${EDIT_BTN_SAVE}            id=edit-product-submit-button
+
 # --- Upload Area / File input ---
 ${UPLOAD_CLICK_AREA}         xpath=//*[contains(@class,'flex') and contains(@class,'flex-col') and contains(.,'เพิ่มรูปภาพ')] | //div[.//span[contains(normalize-space(.),'เพิ่มรูปภาพ')]]
 ${INPUT_FILE_OPT1}           xpath=//input[@type='file' and (contains(@id,'image') or contains(@name,'image') or contains(@accept,'image'))]

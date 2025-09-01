@@ -11,7 +11,17 @@ ${SCREEN_DIR}         screenshots
 ${STATUS_BASE}        ทดสอบสถานะ
 
 # --- Status Locators ---
-${BTN_ADD_STATUS}     css=button[data-tip='เพิ่มสถานะ']
-${INPUT_STATUS}       xpath=//input[@placeholder='ชื่อสถานะ']
+${BTN_ADD_STATUS}     id=create-status-button
+${INPUT_STATUS}       xpath=//input[@placeholder='ชื่อสถานะสินค้า']
 ${BTN_SAVE_STATUS}    xpath=//button[contains(normalize-space(.),'บันทึก')]
 ${SEARCH_STATUS}      id=status-search-input
+
+# --- Edit and Delete Buttons ---
+${BTN_EDIT_STATUS}          xpath=//button[starts-with(@id,'edit-status-button-')]
+${BTN_DELETE_STATUS}        xpath=//button[starts-with(@id,'delete-status-button-')]
+${EDIT_INPUT_STATUS}        id=edit-status-name-input
+${BTN_SAVE_EDIT_STATUS}     id=edit-status-submit-button
+
+# --- Common Elements ---
+${SPINNERS}                 css=.ant-spin,.loading,.v-overlay--active
+${SWAL_CONFIRM}             css=button.swal2-confirm

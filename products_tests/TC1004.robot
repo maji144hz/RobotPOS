@@ -12,7 +12,7 @@ Resource          ../keywords/common_keywords.robot
 Resource          ../keywords/products_keywords.robot
 
 *** Test Cases ***
-เพิ่มสินค้า TC1004
+เพิ่มสินค้าแบบกรอกแค่รูปชื่อกับรายละเอียดสินค้า TC1004
     Create Directory                     ${SCREEN_DIR}
     Go To                               ${PRODUCT_LIST_URL}
     Wait Until Element Is Visible        ${BTN_ADD_PRODUCT}    ${TIMEOUT}
@@ -28,12 +28,3 @@ Resource          ../keywords/products_keywords.robot
     Click Save Product
     Click If Exists                      ${SWAL_CONFIRM}
     Wait Table Idle
-
-*** Keywords ***
-Login Using Resource
-    Go To Login Page
-    Input Username     ${VALID USER}
-    Input Password     ${VALID PASSWORD}
-    Submit Credentials
-    Welcome Page Should Be Open
-    Sleep    0.2s
