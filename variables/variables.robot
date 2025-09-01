@@ -2,11 +2,9 @@
 ${BASE_URL}                  http://localhost:5173
 ${BROWSER}                   chrome
 
-
-
 # --- Timeouts / Dirs ---
 ${TIMEOUT}                   20s
-${SCREEN_DIR}                screenshots
+${SCREEN_DIR}                images/screenshots
 
 # --- Common spinners/dialogs  ---
 ${SPINNERS}                  css=.ant-spin,.loading,.v-overlay--active,.swal2-container
@@ -21,7 +19,7 @@ ${BTN_ADD_PRODUCT}           id=stock-add-product-button
 ${UPLOAD_CLICK_AREA}         xpath=//*[contains(@class,'flex') and contains(@class,'flex-col') and contains(.,'เพิ่มรูปภาพ')] | //div[.//span[contains(normalize-space(.),'เพิ่มรูปภาพ')]]
 ${INPUT_FILE_OPT1}           xpath=//input[@type='file' and (contains(@id,'image') or contains(@name,'image') or contains(@accept,'image'))]
 ${INPUT_FILE_OPT2}           xpath=//input[@type='file']
-${PRODUCT_IMAGE_PATH}        E:${/}มหาลัย${/}โปรเจค${/}Robot_Pos${/}photo${/}น้ำยาล้างจาน.jpg
+${PRODUCT_IMAGE_PATH}        ${EXECDIR}${/}images${/}test_images${/}น้ำยาล้างจาน.jpg
 
 # --- Form fields ---
 ${INPUT_NAME}                id=create-product-name-input
@@ -46,4 +44,4 @@ ${BTN_SAVE_OPT1}             id=create-product-submit-button
 ${BTN_SAVE_OPT2}             xpath=//button[normalize-space()='บันทึกข้อมูล' or normalize-space()='บันทึก']
 ${BTN_SAVE_OPT3}             css=button.btn-success, button.bg-green-500
 
-${BTN_CANCEL_PRODUCT}    id=create-product-cancel-button
+${BTN_CANCEL_PRODUCT}        id=create-product-cancel-button

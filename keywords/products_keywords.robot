@@ -3,17 +3,47 @@ Library    SeleniumLibrary
 Library    OperatingSystem
 
 *** Keywords ***
+# ===== Products Login & Navigation =====
+Login Using Resource
+    Go To Login Page
+    Input Username     ${VALID_USER}
+    Input Password     ${VALID_PASSWORD}
+    Submit Credentials
+    Welcome Page Should Be Open
+    Sleep    0.2s
 
+Go To Login Page
+    Go To    ${BASE_URL}/
+    Wait Until Page Contains Element    css=input[name='username']
+    Wait Until Page Contains Element    css=input[name='password']
+    Wait Until Page Contains Element    css=button[type='submit']
+
+Input Username
+    [Arguments]    ${username}
+    Wait Until Element Is Visible    css=input[name='username']
+    Input Text    css=input[name='username']    ${username}
+
+Input Password
+    [Arguments]    ${password}
+    Wait Until Element Is Visible    css=input[name='password']
+    Input Text    css=input[name='password']    ${password}
+
+Submit Credentials
+    Wait Until Element Is Visible    css=button[type='submit']
+    Click Button    css=button[type='submit']
+
+Welcome Page Should Be Open
+    Sleep    2s
+    Wait Until Page Contains Element    xpath=//span[contains(text(),'จัดการ')]    ${TIMEOUT}
+    Wait Until Page Contains Element    xpath=//span[contains(text(),'ตั้งค่า')]    ${TIMEOUT}
+
+# ===== Products Management =====
 Type
     [Arguments]    ${locator}    ${text}
     Should Not Be Empty    ${locator}    Locator ว่าง: ตรวจสอบตัวแปร locator/ไฟล์ variables.robot
     Wait Until Element Is Visible    ${locator}    ${TIMEOUT}
     Clear Element Text               ${locator}
     Input Text    locator=${locator}    text=${text}
-
-Wait Table Idle
-    Run Keyword And Ignore Error    Wait Until Element Is Not Visible    ${SPINNERS}    6s
-    Sleep    0.3s
 
 Get First Present Locator
     [Arguments]    @{locators}
@@ -46,16 +76,11 @@ Upload Product Image
 
 Click Save Product
     ${clicked}=    Run Keyword And Return Status    Click Element    ${BTN_SAVE_OPT1}
-    Run Keyword If    ${clicked}    Return From Keyword
+    Run Keyword If    ${clicked}    RETURN From Keyword
     ${has2}=    Run Keyword And Return Status    Wait Until Page Contains Element    ${BTN_SAVE_OPT2}    2s
     Run Keyword If    ${has2}    Click Element    ${BTN_SAVE_OPT2}
-    Run Keyword If    ${has2}    Return From Keyword
+    Run Keyword If    ${has2}    RETURN From Keyword
     ${has3}=    Run Keyword And Return Status    Wait Until Page Contains Element    ${BTN_SAVE_OPT3}    2s
     Run Keyword If    ${has3}    Click Element    ${BTN_SAVE_OPT3}
-    Run Keyword If    ${has3}    Return From Keyword
-    Fail    ไม่พบปุ่มบันทึกสินค้า 
-
-Click If Exists
-    [Arguments]    ${locator}
-    ${ok}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${locator}    3s
-    Run Keyword If    ${ok}    Click Element    ${locator}
+    Run Keyword If    ${has3}    RETURN From Keyword
+    Fail    ไม่พบปุ่มบันทึกสินค้า

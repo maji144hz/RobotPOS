@@ -1,24 +1,10 @@
 *** Settings ***
-Documentation     A resource file with reusable keywords and variables.
-...
-...               The system specific keywords created here form our own
-...               domain specific language. They utilize keywords provided
-...               by the imported SeleniumLibrary.
-Library           SeleniumLibrary
-
-*** Variables ***
-${SERVER}         localhost:5173
-${BROWSER}        chrome
-${DELAY}          0.1
-${VALID USER}     1
-${VALID PASSWORD}    123
-${LOGIN URL}      http://${SERVER}/
-${WELCOME URL}    http://${SERVER}/
-${ERROR URL}      http://${SERVER}/
+Library    SeleniumLibrary
 
 *** Keywords ***
+# ===== Login Management =====
 Open Browser To Login Page
-    Open Browser    ${LOGIN URL}    ${BROWSER}
+    Open Browser    ${LOGIN_URL}    ${BROWSER}
     Maximize Browser Window
     Set Selenium Speed    ${DELAY}
     Login Page Should Be Open
@@ -27,7 +13,7 @@ Login Page Should Be Open
     Title Should Be    POSSIBLE
 
 Go To Login Page
-    Go To    ${LOGIN URL}
+    Go To    ${LOGIN_URL}
     Login Page Should Be Open
 
 Input Username
@@ -45,10 +31,10 @@ Submit Credentials
     Click Button    css=button[type='submit']
 
 Welcome Page Should Be Open
-    Location Should Be    ${WELCOME URL}
+    Location Should Be    ${WELCOME_URL}
     Title Should Be    POSSIBLE
 
 Login Should Have Failed
-    Location Should Be    ${ERROR URL}
+    Location Should Be    ${ERROR_URL}
     Title Should Be    POSSIBLE
     Page Should Contain    ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง

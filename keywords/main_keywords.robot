@@ -1,18 +1,10 @@
 *** Settings ***
-Documentation     Common settings and keywords for all test suites
-Library           SeleniumLibrary
-Library           String
-Library           Collections
-
-*** Variables ***
-${BASE_URL}         http://localhost:5173
-${BROWSER}          chrome
-${DELAY}           0
-${VALID_USERNAME}   123
-${VALID_PASSWORD}   1234
-${RANDOM_STRING}    ${EMPTY}
+Library    SeleniumLibrary
+Library    String
+Library    Collections
 
 *** Keywords ***
+# ===== Main Browser & Login =====
 Open Browser To Login Page
     Open Browser    ${BASE_URL}/login    ${BROWSER}
     Maximize Browser Window
@@ -41,4 +33,4 @@ Submit Credentials
 
 Generate Random String
     ${random}=    Generate Random String    8    [LETTERS][NUMBERS]
-    Set Suite Variable    ${RANDOM_STRING}    ${random} 
+    Set Suite Variable    ${RANDOM_STRING}    ${random}
