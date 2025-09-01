@@ -40,7 +40,7 @@ Welcome Page Should Be Open
 # ===== Products Management =====
 Type
     [Arguments]    ${locator}    ${text}
-    Should Not Be Empty    ${locator}    Locator ว่าง: ตรวจสอบตัวแปร locator/ไฟล์ variables.robot
+    Should Not Be Empty    ${locator}    
     Wait Until Element Is Visible    ${locator}    ${TIMEOUT}
     Clear Element Text               ${locator}
     Input Text    locator=${locator}    text=${text}
