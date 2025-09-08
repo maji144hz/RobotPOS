@@ -18,8 +18,8 @@ Suite Teardown    Close All Browsers
     # สร้างโปรโมชั่น
     Click Add Promotion Button
     Input Promotion Name           ${PROMOTION_NAME}
-    Input Promotion Start Date     ${PROMOTION_START_DATE}
-    Input Promotion End Date       ${PROMOTION_END_DATE}
+    Select Promotion Date          start    ${PROMOTION_START_DAY}    ${PROMOTION_START_MONTH}    ${PROMOTION_START_YEAR}
+    Select Promotion Date          end      ${PROMOTION_END_DAY}      ${PROMOTION_END_MONTH}      ${PROMOTION_END_YEAR}
     Select Promotion Product       ${PROMOTION_PRODUCT}
     Input Original Price           ${PROMOTION_ORIGINAL_PRICE}
     Select Lot For Promotion       ${PROMOTION_LOT_LOCATOR}
