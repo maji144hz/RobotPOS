@@ -37,6 +37,18 @@ Submit Credentials
 Welcome Page Should Be Open
     Wait Until Page Contains Element    xpath=//*[@id="root"]//aside    ${TIMEOUT}
 
+# ===== Helpers =====
+Click First Matching
+    [Arguments]    @{locators}
+    FOR    ${locator}    IN    @{locators}
+        ${visible}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${locator}    2s
+        IF    ${visible}
+            Scroll Element Into View    ${locator}
+            Click Element               ${locator}
+            Exit For Loop
+        END
+    END
+
 # ===== Notification (สำหรับ TC5001) =====
 Open Notification Panel
     Wait Until Element Is Visible    ${NOTIFICATION_BELL_ICON}    ${TIMEOUT}
@@ -86,12 +98,24 @@ Filter Expired Notifications
     Wait Until Element Is Visible    ${FILTER_EXPIRED_BUTTON}    ${TIMEOUT}
     Click Element    ${FILTER_EXPIRED_BUTTON}
 
+# ===== Actions สำหรับ TC5003  =====
+Filter Expiring Notifications
+    # รองรับทั้งปุ่มฟิลเตอร์และการกดแท็บข้อความ "ใกล้หมดอายุ"
+    ${by_btn}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${FILTER_EXPIRING_BUTTON}    2s
+    IF    ${by_btn}
+        Click Element    ${FILTER_EXPIRING_BUTTON}
+    ELSE
+        Select Notification Tab    ${TAB_EXPIRING}
+    END
+
+Verify Expiring Tab Visible
+    Notification Tab Should Be Visible    ${TAB_EXPIRING}
+
 Select First Notification For Disposal
     Wait Until Element Is Visible    ${DISPOSE_ACTION_BUTTON}    ${TIMEOUT}
     Click Element    ${DISPOSE_ACTION_BUTTON}
 
 Confirm Disposal
-    # ปุ่มยืนยันของ SweetAlert2
     ${clicked}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${CONFIRM_DISPOSE_BUTTON}    ${TIMEOUT}
     IF    ${clicked}
         Scroll Element Into View    ${CONFIRM_DISPOSE_BUTTON}
@@ -104,4 +128,68 @@ Verify Disposal Success
     ${ok1}=    Run Keyword And Return Status    Page Should Contain    ${DISPOSE_SUCCESS_TEXT}
     ${ok2}=    Run Keyword And Return Status    Page Should Contain    สำเร็จ
     Should Be True    ${ok1} or ${ok2}    ไม่พบข้อความยืนยันการตัดจำหน่าย
+
+# ===== Actions สำหรับ TC5004  =====
+Filter Lowstock Notifications
+    Wait Until Element Is Visible    ${FILTER_LOWSTOCK_BUTTON}    ${TIMEOUT}
+    Click Element    ${FILTER_LOWSTOCK_BUTTON}
+
+Open Create PO From Notification
+    Wait Until Element Is Visible    ${LOWSTOCK_ACTION_BUTTON}    ${TIMEOUT}
+    Click Element    ${LOWSTOCK_ACTION_BUTTON}
+    Wait Until Element Is Visible    ${CREATE_PO_BUTTON}    ${TIMEOUT}
+    Click Element    ${CREATE_PO_BUTTON}
+
+Search And Add Product To PO
+    [Arguments]    ${keyword}=${PO_SEARCH_KEYWORD}
+    Wait Until Element Is Visible    ${PRODUCT_SEARCH_INPUT}    ${TIMEOUT}
+    Clear Element Text    ${PRODUCT_SEARCH_INPUT}
+    Input Text    ${PRODUCT_SEARCH_INPUT}    ${keyword}
+    Sleep    1s
+    Click Element    ${PRODUCT_ADD_BUTTON}
+
+Select PO Supplier
+    [Arguments]    ${supplier}=${PO_SUPPLIER_NAME}
+    Wait Until Element Is Visible    ${PO_SUPPLIER_SELECT}    ${TIMEOUT}
+    Scroll Element Into View          ${PO_SUPPLIER_SELECT}
+    Select From List By Label         ${PO_SUPPLIER_SELECT}    ${supplier}
+    Wait Until Element Is Visible     ${PO_QUANTITY_INPUT}    ${TIMEOUT}
+
+Fill PO Quantity And Unit
+    [Arguments]    ${qty}=${PO_QUANTITY}
+    Wait Until Element Is Visible    ${PO_QUANTITY_INPUT}    ${TIMEOUT}
+    Scroll Element Into View          ${PO_QUANTITY_INPUT}
+    Clear Element Text                ${PO_QUANTITY_INPUT}
+    Input Text                        ${PO_QUANTITY_INPUT}    ${qty}
+    ${filled}=    Get Value          ${PO_QUANTITY_INPUT}
+    IF    '${filled}' != '${qty}'
+        Capture Page Screenshot
+        Fail    กรอกจำนวนไม่สำเร็จ: ค่าปัจจุบันคือ ${filled}
+    END
+    ${has_switch}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${PO_UNIT_SWITCH}    2s
+    IF    ${has_switch}
+        Click Element    ${PO_UNIT_SWITCH}
+    END
+
+Submit Purchase Order And Verify
+    Wait Until Element Is Visible    ${PO_SUBMIT_BUTTON}    ${TIMEOUT}
+    Click Element    ${PO_SUBMIT_BUTTON}
+    ${ok1}=    Run Keyword And Return Status    Page Should Contain    ${PURCHASE_SUCCESS_TEXT}
+    ${ok2}=    Run Keyword And Return Status    Page Should Contain    สำเร็จ
+    Should Be True    ${ok1} or ${ok2}    ไม่พบข้อความว่าสร้างใบสั่งซื้อสำเร็จ
+
+# ===== Negative Flow สำหรับ TC5005 =====
+Clear Quantity And Submit Expect Error
+    [Arguments]    ${expected_error}=${PO_ERROR_TEXT}
+    Wait Until Element Is Visible    ${PO_QUANTITY_INPUT}    ${TIMEOUT}
+    Clear Element Text    ${PO_QUANTITY_INPUT}
+    Click Element    ${PO_SUBMIT_BUTTON}
+    Sleep    0.5s
+    ${success}=    Run Keyword And Return Status    Page Should Contain    ${PURCHASE_SUCCESS_TEXT}
+    ${form_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${PO_SUBMIT_BUTTON}
+    ${error_seen}=    Run Keyword And Return Status    Page Should Contain    ${expected_error}
+    Should Be False    ${success}    ไม่ควรสำเร็จเมื่อจำนวนว่าง
+    Should Be True     ${form_visible}    แบบฟอร์มควรยังเปิดอยู่
+    # เห็น error message เป็นโบนัส ถ้าไม่มีจะไม่ fail แต่บันทึกไว้
+    Run Keyword If    not ${error_seen}    Log    ไม่พบข้อความ error ที่คาดหวัง: ${expected_error}
 
