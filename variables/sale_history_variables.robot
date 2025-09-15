@@ -14,21 +14,21 @@ ${TC11001_PASSWORD}           ${VALID_PASSWORD}
 # Sales History Page
 ${TC11001_SALES_HISTORY_MENU}    xpath=//*[@id="root"]/div/aside/div/nav/div/a[3]
 ${TC11001_ORDER_TABLE}           xpath=//*[@id="root"]/div/div/main/div/div/div/div[3]/div/table
-${TC11001_ORDER_ROW}             xpath=//*[@id="root"]/div/div/main/div/div/div/div[3]/div/table/tbody/tr[1]/td[1]
+${TC11001_ORDER_ROW}             xpath=//*[@id="root"]/div/div/main/div/div/div/div[3]/div[1]/table/tbody/tr[1]/td[1]
 ${TC11001_ORDER_DETAIL_MODAL}    xpath=//*[@id="root"]/div/div/main/div/div/div/div[4]/div/div[1]
 
 # Test Data
-${TC11001_ORDER_ID}              ORD2509146866556
-${TC11001_ORDER_DATE}            14/9/2568
+${TC11001_ORDER_ID}              ORD2509156866918
+${TC11001_ORDER_DATE}            15/9/2568
 ${TC11001_ORDER_STATUS}          ขายสำเร็จ
-${TC11001_ORDER_TOTAL}           578 บาท
-${TC11001_ORDER_ITEMS_COUNT}     2 รายการ
-${TC11001_PAYMENT_METHOD}        Cash
-${TC11001_AMOUNT_RECEIVED}       1,000 บาท
-${TC11001_CHANGE_AMOUNT}         422 บาท
-${TC11001_LOT_ITEMS_COUNT}       2 รายการ
-${TC11001_LOT_COUNT}             2 ล็อต
-${TC11001_PIECES_COUNT}          22 ชิ้น
+${TC11001_ORDER_TOTAL}           56  บาท
+${TC11001_ORDER_ITEMS_COUNT}     1 รายการ
+${TC11001_PAYMENT_METHOD}        BankTransfer
+${TC11001_AMOUNT_RECEIVED}       100  บาท
+${TC11001_CHANGE_AMOUNT}         44 บาท
+${TC11001_LOT_ITEMS_COUNT}       1 รายการ
+${TC11001_LOT_COUNT}             1 ล็อต
+${TC11001_PIECES_COUNT}          2 ชิ้น
 
 # Expected Messages
 ${TC11001_SUCCESS_MESSAGE}       ระบบตรวจสอบว่าข้อมูลครบถ้วนและถูกต้อง
@@ -42,29 +42,30 @@ ${TC11002_PASSWORD}           ${VALID_PASSWORD}
 # Sales History Page
 ${TC11002_SALES_HISTORY_MENU}    xpath=//*[@id="root"]/div/aside/div/nav/div/a[3]
 ${TC11002_ORDER_ROW}             xpath=//*[@id="root"]/div/div/main/div/div/div/div[3]/div/table/tbody/tr[1]/td[1]
-${TC11002_EDIT_BUTTON}           xpath=//*[@id="root"]/div/div/main/div/div/div/div[4]/div/div[2]/div[2]/div[2]/div[1]/div/div/div/div[5]/button
+${TC11002_EDIT_BUTTON}           xpath=//*[@id="root"]/div/div/main/div/div/div/div[4]/div/div[2]/div[2]/div[2]/div/div/div/div/div[5]/button
 ${TC11002_CONTINUE_BUTTON}       xpath=/html/body/div[2]/div/div[6]/button[1]
 ${TC11002_PRICE_INPUT}           xpath=//*[@id="root"]/div/div/main/div/div/div/div[5]/div/div[2]/div[3]/input
 ${TC11002_SAVE_CHANGES_BUTTON}   xpath=//*[@id="root"]/div/div/main/div/div/div/div[5]/div/div[2]/div[5]/button[2]
 
 # Test Data
-${TC11002_ORDER_ID}              ORD2509146866556
-${TC11002_PRODUCT_NAME}          เลย์ รสหอยเชลล์อบเนย 77 กรัม
-${TC11002_CURRENT_QUANTITY}      1 แพ็ค
-${TC11002_CURRENT_PRICE}         290 บาท
-${TC11002_NEW_PRICE}             288
-${TC11002_LOT_USED}              LOT001(10)
-${TC11002_PURCHASE_PRICE}        B30
-${TC11002_EXPIRATION_DATE}       15/7/2569
+${TC11002_ORDER_ID}              ORD2509156866918
+${TC11002_PRODUCT_NAME}          น้ำตาลทรายขาว 1 กก.
+${TC11002_CURRENT_QUANTITY}      2 แพ็ค
+${TC11002_CURRENT_PRICE}         28 บาท
+${TC11002_NEW_PRICE}             30
+${TC11002_LOT_USED}              LOT001(2)
+${TC11002_PURCHASE_PRICE}        B24
+${TC11002_EXPIRATION_DATE}       30/12/2568
 
 # Summary Data
-${TC11002_QUANTITY_SUMMARY}      1 - 1 แพ็ค
-${TC11002_PRICE_SUMMARY}         290 - 288 บาท
-${TC11002_NEW_TOTAL}             288 บาท
+${TC11002_QUANTITY_SUMMARY}      2 - 2 แพ็ค
+${TC11002_PRICE_SUMMARY}         28 - 30 บาท
+${TC11002_NEW_TOTAL}             60 บาท
 
 # Expected Messages
 ${TC11002_SUCCESS_MESSAGE}       ระบบตรวจสอบว่าข้อมูลครบถ้วนและถูกต้อง
 ${TC11002_EDIT_SUCCESS_MESSAGE}  แก้ไขสำเร็จ อัพเดทรายละเอียดสินค้าเรียบร้อยแล้ว
+
 
 # --- TC11003: การแก้ไขรายการสินค้าในรายการคำสั่งซื้อไม่สำเร็จ ---
 # Login Data
@@ -80,18 +81,18 @@ ${TC11003_PRICE_INPUT}           xpath=//*[@id="root"]/div/div/main/div/div/div/
 ${TC11003_SAVE_CHANGES_BUTTON}   xpath=//*[@id="root"]/div/div/main/div/div/div/div[5]/div/div[2]/div[5]/button[2]
 
 # Test Data
-${TC11003_ORDER_ID}              ORD2509146866556
-${TC11003_PRODUCT_NAME}          เลย์ รสหอยเชลล์อบเนย 77 กรัม
-${TC11003_CURRENT_QUANTITY}      1 แพ็ค
-${TC11003_CURRENT_PRICE}         290 บาท
+${TC11003_ORDER_ID}              ORD2509156866918
+${TC11003_PRODUCT_NAME}          น้ำตาลทรายขาว 1 กก.
+${TC11003_CURRENT_QUANTITY}      2 แพ็ค
+${TC11003_CURRENT_PRICE}         28 บาท
 ${TC11003_INVALID_PRICE}         0
-${TC11003_LOT_USED}              LOT001(10)
-${TC11003_PURCHASE_PRICE}        B30
-${TC11003_EXPIRATION_DATE}       15/7/2569
+${TC11003_LOT_USED}              LOT001(2)
+${TC11003_PURCHASE_PRICE}        B24
+${TC11003_EXPIRATION_DATE}       30/12/2568
 
 # Summary Data
 ${TC11003_QUANTITY_SUMMARY}      1 - 1 แพ็ค
-${TC11003_PRICE_SUMMARY}         290 - 0 บาท
+${TC11003_PRICE_SUMMARY}         28 - 0 บาท
 ${TC11003_NEW_TOTAL}             0 บาท
 
 # Expected Messages
