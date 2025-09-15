@@ -100,7 +100,6 @@ Filter Expired Notifications
 
 # ===== Actions สำหรับ TC5003  =====
 Filter Expiring Notifications
-    # รองรับทั้งปุ่มฟิลเตอร์และการกดแท็บข้อความ "ใกล้หมดอายุ"
     ${by_btn}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${FILTER_EXPIRING_BUTTON}    2s
     IF    ${by_btn}
         Click Element    ${FILTER_EXPIRING_BUTTON}
@@ -110,24 +109,6 @@ Filter Expiring Notifications
 
 Verify Expiring Tab Visible
     Notification Tab Should Be Visible    ${TAB_EXPIRING}
-
-Select First Notification For Disposal
-    Wait Until Element Is Visible    ${DISPOSE_ACTION_BUTTON}    ${TIMEOUT}
-    Click Element    ${DISPOSE_ACTION_BUTTON}
-
-Confirm Disposal
-    ${clicked}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${CONFIRM_DISPOSE_BUTTON}    ${TIMEOUT}
-    IF    ${clicked}
-        Scroll Element Into View    ${CONFIRM_DISPOSE_BUTTON}
-        Click Element               ${CONFIRM_DISPOSE_BUTTON}
-    ELSE
-        Click Element    xpath=//button[contains(@class,'swal2-confirm') or normalize-space(text())='ตกลง']
-    END
-
-Verify Disposal Success
-    ${ok1}=    Run Keyword And Return Status    Page Should Contain    ${DISPOSE_SUCCESS_TEXT}
-    ${ok2}=    Run Keyword And Return Status    Page Should Contain    สำเร็จ
-    Should Be True    ${ok1} or ${ok2}    ไม่พบข้อความยืนยันการตัดจำหน่าย
 
 # ===== Actions สำหรับ TC5004  =====
 Filter Lowstock Notifications
@@ -166,9 +147,18 @@ Fill PO Quantity And Unit
         Capture Page Screenshot
         Fail    กรอกจำนวนไม่สำเร็จ: ค่าปัจจุบันคือ ${filled}
     END
-    ${has_switch}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${PO_UNIT_SWITCH}    2s
-    IF    ${has_switch}
-        Click Element    ${PO_UNIT_SWITCH}
+
+Fill Purchase Price
+    [Arguments]    ${price}=${PO_PRICE}
+    Wait Until Element Is Visible    ${PO_PRICE_INPUT}    ${TIMEOUT}
+    Scroll Element Into View         ${PO_PRICE_INPUT}
+    Clear Element Text               ${PO_PRICE_INPUT}
+    Input Text                       ${PO_PRICE_INPUT}    ${price}
+    Press Keys                       ${PO_PRICE_INPUT}    TAB
+    ${p_val}=    Get Value          ${PO_PRICE_INPUT}
+    IF    '${p_val}' != '${price}'
+        Capture Page Screenshot
+        Fail    กรอกราคาซื้อไม่สำเร็จ: ค่าปัจจุบันคือ ${p_val}
     END
 
 Submit Purchase Order And Verify
@@ -188,8 +178,7 @@ Clear Quantity And Submit Expect Error
     ${success}=    Run Keyword And Return Status    Page Should Contain    ${PURCHASE_SUCCESS_TEXT}
     ${form_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${PO_SUBMIT_BUTTON}
     ${error_seen}=    Run Keyword And Return Status    Page Should Contain    ${expected_error}
-    Should Be False    ${success}    ไม่ควรสำเร็จเมื่อจำนวนว่าง
+    Should Not Be True    ${success}    ไม่ควรสำเร็จเมื่อจำนวนว่าง
     Should Be True     ${form_visible}    แบบฟอร์มควรยังเปิดอยู่
-    # เห็น error message เป็นโบนัส ถ้าไม่มีจะไม่ fail แต่บันทึกไว้
     Run Keyword If    not ${error_seen}    Log    ไม่พบข้อความ error ที่คาดหวัง: ${expected_error}
 
