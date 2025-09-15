@@ -2,7 +2,7 @@
 # --- Base Configuration ---
 ${BASE_URL}           http://localhost:5173
 ${BROWSER}            chrome
-${VALID_USER}         BN
+${VALID_USER}         1
 ${VALID_PASSWORD}     123
 ${TIMEOUT}            20s
 

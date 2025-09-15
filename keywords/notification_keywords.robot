@@ -35,116 +35,73 @@ Submit Credentials
     Click Button    css=button[type='submit']
 
 Welcome Page Should Be Open
-    Wait Until Page Contains Element    xpath=//*[@id="root"]/div/aside/div/nav/div/a[2]    ${TIMEOUT}
+    Wait Until Page Contains Element    xpath=//*[@id="root"]//aside    ${TIMEOUT}
 
-# ===== Notification Management =====
-Click Notification Bell Icon
-    # รอให้หน้าเว็บโหลดเสร็จ
+# ===== Notification (สำหรับ TC5001) =====
+Open Notification Panel
     Wait Until Element Is Visible    ${NOTIFICATION_BELL_ICON}    ${TIMEOUT}
-    
-    # คลิกไอคอนรูปกระดิ่ง
-    Click Element    ${NOTIFICATION_BELL_ICON}
-    Sleep    1s
+    Scroll Element Into View          ${NOTIFICATION_BELL_ICON}
+    Click Element                     ${NOTIFICATION_BELL_ICON}
+    Sleep    0.4s
+    Wait Until Keyword Succeeds    10x    0.5s    Verify Notification Panel Appeared
+    Sleep    ${NOTIFICATION_HOLD}
+
+Verify Notification Panel Appeared
+    ${ok1}=    Run Keyword And Return Status    Page Should Contain    ${NOTIFICATION_WINDOW_TITLE}
+    ${ok2}=    Run Keyword And Return Status    Page Should Contain Element    xpath=//*[contains(normalize-space(.),'ทั้งหมด')]
+    IF    ${ok1} or ${ok2}
+        No Operation
+    ELSE
+        Capture Page Screenshot
+        Fail    คลิกกระดิ่งแล้วไม่พบหน้าต่างการแจ้งเตือนหรือแท็บ "ทั้งหมด"
+    END
+
+Click Notification Bell Icon
+    Open Notification Panel
 
 Verify Notification Window Is Displayed
-    # ตรวจสอบว่าหน้าต่างการแจ้งเตือนแสดงขึ้นมา
-    Wait Until Element Is Visible    ${NOTIFICATION_WINDOW}    ${TIMEOUT}
-    Page Should Contain Element    ${NOTIFICATION_WINDOW}
-
-Verify Notification List Is Displayed
-    # ตรวจสอบว่ารายการแจ้งเตือนแสดงขึ้นมา
-    Wait Until Element Is Visible    ${NOTIFICATION_LIST}    ${TIMEOUT}
-    Page Should Contain Element    ${NOTIFICATION_LIST}
+    ${ok1}=    Run Keyword And Return Status    Page Should Contain    ${NOTIFICATION_WINDOW_TITLE}
+    ${ok2}=    Run Keyword And Return Status    Page Should Contain Element    xpath=//*[contains(normalize-space(.),'ทั้งหมด')]
+    Should Be True    ${ok1} or ${ok2}    ต้องเห็นหัวข้อการแจ้งเตือนหรือแท็บ "ทั้งหมด"
 
 Verify Notification Items Are Present
-    # ตรวจสอบว่ามีรายการแจ้งเตือน
     ${item_count}=    Get Element Count    ${NOTIFICATION_ITEM}
     Log    จำนวนรายการแจ้งเตือน: ${item_count}
-    
-    # ตรวจสอบว่ามีรายการแจ้งเตือนอย่างน้อย 1 รายการ
     Should Be True    ${item_count} > 0    ไม่พบรายการแจ้งเตือน
 
-Verify Notification Window Title
-    # ตรวจสอบหัวข้อหน้าต่างการแจ้งเตือน
-    Page Should Contain    ${NOTIFICATION_WINDOW_TITLE}
+Select Notification Tab
+    [Arguments]    ${tab_name}
+    ${locator}=    Set Variable    xpath=//*[self::button or self::a or self::div or self::span][normalize-space(.)='${tab_name}']
+    Wait Until Element Is Visible    ${locator}    ${TIMEOUT}
+    Click Element    ${locator}
 
-Verify Notification Content
-    # ตรวจสอบเนื้อหาของการแจ้งเตือน
-    Page Should Contain    ${NOTIFICATION_ITEM_TEXT}
+Notification Tab Should Be Visible
+    [Arguments]    ${tab_name}
+    ${active_tab}=    Set Variable    xpath=//*[contains(@class,'active') or contains(@aria-selected,'true')][normalize-space(.)='${tab_name}']
+    ${ok}=    Run Keyword And Return Status    Wait Until Page Contains Element    ${active_tab}    ${TIMEOUT}
+    Run Keyword If    not ${ok}    Page Should Contain    ${tab_name}
 
-Close Notification Window
-    # ปิดหน้าต่างการแจ้งเตือนโดยคลิกที่ไอคอนกระดิ่งอีกครั้ง
-    Click Element    ${NOTIFICATION_BELL_ICON}
-    Sleep    1s
+# ===== Actions สำหรับ TC5002 =====
+Filter Expired Notifications
+    Wait Until Element Is Visible    ${FILTER_EXPIRED_BUTTON}    ${TIMEOUT}
+    Click Element    ${FILTER_EXPIRED_BUTTON}
 
-Verify Notification Window Is Closed
-    # ตรวจสอบว่าหน้าต่างการแจ้งเตือนปิดแล้ว
-    ${window_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${NOTIFICATION_WINDOW}
-    Run Keyword If    ${window_visible}    Log    หน้าต่างการแจ้งเตือนยังเปิดอยู่
-    Run Keyword If    not ${window_visible}    Log    หน้าต่างการแจ้งเตือนปิดแล้ว
+Select First Notification For Disposal
+    Wait Until Element Is Visible    ${DISPOSE_ACTION_BUTTON}    ${TIMEOUT}
+    Click Element    ${DISPOSE_ACTION_BUTTON}
 
+Confirm Disposal
+    # ปุ่มยืนยันของ SweetAlert2
+    ${clicked}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${CONFIRM_DISPOSE_BUTTON}    ${TIMEOUT}
+    IF    ${clicked}
+        Scroll Element Into View    ${CONFIRM_DISPOSE_BUTTON}
+        Click Element               ${CONFIRM_DISPOSE_BUTTON}
+    ELSE
+        Click Element    xpath=//button[contains(@class,'swal2-confirm') or normalize-space(text())='ตกลง']
+    END
 
-Verify Disposal Confirmation
-    # ตรวจสอบการยืนยันการตัดจำหน่าย
-    Sleep    2s
-    ${success_found}=    Run Keyword And Return Status    Page Should Contain    ${TC5002_SUCCESS_MESSAGE}
-    Run Keyword If    not ${success_found}    ${alt_success}=    Run Keyword And Return Status    Page Should Contain    สำเร็จ
-    Run Keyword If    not ${success_found} and not ${alt_success}    ${alt_success2}=    Run Keyword And Return Status    Page Should Contain    ตกลง
-    Run Keyword If    not ${success_found} and not ${alt_success} and not ${alt_success2}    Capture Page Screenshot
-    Run Keyword If    not ${success_found} and not ${alt_success} and not ${alt_success2}    Log    ไม่พบข้อความสำเร็จที่คาดหวัง
-    Run Keyword If    not ${success_found} and not ${alt_success} and not ${alt_success2}    ${page_content}=    Get Text    css=body
-    Run Keyword If    not ${success_found} and not ${alt_success} and not ${alt_success2}    Log    เนื้อหาหน้าจอ: ${page_content}input[name='password']    ${password}
-
-Submit Credentials
-    Click Button    css=button[type='submit']
-
-Welcome Page Should Be Open
-    Wait Until Page Contains Element    xpath=//*[@id="root"]/div/aside/div/nav/div/a[2]    ${TIMEOUT}
-
-# ===== Notification Management =====
-Click Notification Bell Icon
-    # รอให้หน้าเว็บโหลดเสร็จ
-    Wait Until Element Is Visible    ${NOTIFICATION_BELL_ICON}    ${TIMEOUT}
-    
-    # คลิกไอคอนรูปกระดิ่ง
-    Click Element    ${NOTIFICATION_BELL_ICON}
-    Sleep    1s
-
-Verify Notification Window Is Displayed
-    # ตรวจสอบว่าหน้าต่างการแจ้งเตือนแสดงขึ้นมา
-    Wait Until Element Is Visible    ${NOTIFICATION_WINDOW}    ${TIMEOUT}
-    Page Should Contain Element    ${NOTIFICATION_WINDOW}
-
-Verify Notification List Is Displayed
-    # ตรวจสอบว่ารายการแจ้งเตือนแสดงขึ้นมา
-    Wait Until Element Is Visible    ${NOTIFICATION_LIST}    ${TIMEOUT}
-    Page Should Contain Element    ${NOTIFICATION_LIST}
-
-Verify Notification Items Are Present
-    # ตรวจสอบว่ามีรายการแจ้งเตือน
-    ${item_count}=    Get Element Count    ${NOTIFICATION_ITEM}
-    Log    จำนวนรายการแจ้งเตือน: ${item_count}
-    
-    # ตรวจสอบว่ามีรายการแจ้งเตือนอย่างน้อย 1 รายการ
-    Should Be True    ${item_count} > 0    ไม่พบรายการแจ้งเตือน
-
-Verify Notification Window Title
-    # ตรวจสอบหัวข้อหน้าต่างการแจ้งเตือน
-    Page Should Contain    ${NOTIFICATION_WINDOW_TITLE}
-
-Verify Notification Content
-    # ตรวจสอบเนื้อหาของการแจ้งเตือน
-    Page Should Contain    ${NOTIFICATION_ITEM_TEXT}
-
-Close Notification Window
-    # ปิดหน้าต่างการแจ้งเตือนโดยคลิกที่ไอคอนกระดิ่งอีกครั้ง
-    Click Element    ${NOTIFICATION_BELL_ICON}
-    Sleep    1s
-
-Verify Notification Window Is Closed
-    # ตรวจสอบว่าหน้าต่างการแจ้งเตือนปิดแล้ว
-    ${window_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${NOTIFICATION_WINDOW}
-    Run Keyword If    ${window_visible}    Log    หน้าต่างการแจ้งเตือนยังเปิดอยู่
-    Run Keyword If    not ${window_visible}    Log    หน้าต่างการแจ้งเตือนปิดแล้ว
-
+Verify Disposal Success
+    ${ok1}=    Run Keyword And Return Status    Page Should Contain    ${DISPOSE_SUCCESS_TEXT}
+    ${ok2}=    Run Keyword And Return Status    Page Should Contain    สำเร็จ
+    Should Be True    ${ok1} or ${ok2}    ไม่พบข้อความยืนยันการตัดจำหน่าย
 

@@ -1,7 +1,7 @@
 *** Variables ***
 ${BASE_URL}           http://localhost:5173
 ${BROWSER}            chrome
-${VALID_USER}         BN
+${VALID_USER}         1
 ${VALID_PASSWORD}     123
 ${TIMEOUT}            20s
 
@@ -13,7 +13,7 @@ ${PROMOTION_START_YEAR}         2025
 ${PROMOTION_END_DAY}            15
 ${PROMOTION_END_MONTH}          July
 ${PROMOTION_END_YEAR}           2025
-${PROMOTION_PRODUCT}            นมโฟร์โมสต์ รสจืด 225 มล.
+${PROMOTION_PRODUCT}            นมโฟร์โมสต์
 ${PROMOTION_ORIGINAL_PRICE}     13
 ${PROMOTION_LOT_LOCATOR}       xpath=//*[@id="root"]/div/div/main/div/div/div[3]/div/div[1]/div[3]/div/label[1]
 ${PROMOTION_DISCOUNTED_PRICE}   10
@@ -52,7 +52,7 @@ ${TC6005_START_YEAR}            2025
 ${TC6005_END_DAY}               15
 ${TC6005_END_MONTH}             July
 ${TC6005_END_YEAR}              2025
-${TC6005_PRODUCT}               นมโฟร์โมสต์ รสจืด 225 มล.
+${TC6005_PRODUCT}               นมโฟร์โมสต์
 ${TC6005_ORIGINAL_PRICE}        15
 ${TC6005_LOT_LOCATOR}           xpath=//*[@id="root"]/div/div/main/div/div/div[3]/div/div[1]/div[3]/div/label[1]
 ${TC6005_DISCOUNTED_PRICE}      10
@@ -66,7 +66,7 @@ ${TC6006_START_YEAR}            ${EMPTY}
 ${TC6006_END_DAY}               ${EMPTY}
 ${TC6006_END_MONTH}             ${EMPTY}
 ${TC6006_END_YEAR}              ${EMPTY}
-${TC6006_PRODUCT}               นมโฟร์โมสต์ รสจืด 225 มล.
+${TC6006_PRODUCT}               นมโฟร์โมสต์
 ${TC6006_ORIGINAL_PRICE}        15
 ${TC6006_LOT_LOCATOR}           xpath=//*[@id="root"]/div/div/main/div/div/div[3]/div/div[1]/div[3]/div/label[1]
 ${TC6006_DISCOUNTED_PRICE}      10
@@ -94,7 +94,7 @@ ${TC6008_START_YEAR}            2025
 ${TC6008_END_DAY}               15
 ${TC6008_END_MONTH}             July
 ${TC6008_END_YEAR}              2025
-${TC6008_PRODUCT}               นมโฟร์โมสต์ รสจืด 225 มล.
+${TC6008_PRODUCT}               นมโฟร์โมสต์
 ${TC6008_ORIGINAL_PRICE}        15
 ${TC6008_LOT_LOCATOR}           ${EMPTY}
 ${TC6008_DISCOUNTED_PRICE}      10
@@ -108,7 +108,7 @@ ${TC6009_START_YEAR}            2025
 ${TC6009_END_DAY}               15
 ${TC6009_END_MONTH}             July
 ${TC6009_END_YEAR}              2025
-${TC6009_PRODUCT}               นมโฟร์โมสต์ รสจืด 225 มล.
+${TC6009_PRODUCT}               นมโฟร์โมสต์
 ${TC6009_ORIGINAL_PRICE}        15
 ${TC6009_LOT_LOCATOR}           xpath=//*[@id="root"]/div/div/main/div/div/div[3]/div/div[1]/div[3]/div/label[1]
 ${TC6009_DISCOUNTED_PRICE}      ${EMPTY}
