@@ -1,244 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.12.5 on win32)" generated="2025-09-15T01:05:41.005483" rpa="false" schemaversion="5">
-<suite id="s1" name="TC11003" source="D:\RobotPOS\sale_history_tests\TC11003.robot">
-<kw name="Open Browser To Login Page" owner="sale_history_keywords" type="SETUP">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-09-15T01:05:41.704283" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173'.</msg>
-<arg>${BASE_URL}</arg>
-<arg>${BROWSER}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-09-15T01:05:41.703285" elapsed="2.169649"/>
+<robot generator="Robot 7.3.2 (Python 3.12.5 on win32)" generated="2025-09-16T00:31:59.169323" rpa="false" schemaversion="5">
+<suite id="s1" name="TC2001" source="D:\RobotPOS\notification_tests\TC2001.robot">
+<kw name="Open Browser To Login Page" type="SETUP">
+<msg time="2025-09-16T00:31:59.765795" level="FAIL">Multiple keywords with name 'Open Browser To Login Page' found. Give the full name of the keyword you want to use:
+    notification_keywords.Open Browser To Login Page
+    promotion_keywords.Open Browser To Login Page</msg>
+<status status="FAIL" start="2025-09-16T00:31:59.765795" elapsed="0.000000">Multiple keywords with name 'Open Browser To Login Page' found. Give the full name of the keyword you want to use:
+    notification_keywords.Open Browser To Login Page
+    promotion_keywords.Open Browser To Login Page</status>
 </kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-09-15T01:05:43.872934" elapsed="0.422768"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>css=input[name="username"]</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-09-15T01:05:44.296702" elapsed="0.052556"/>
-</kw>
-<status status="PASS" start="2025-09-15T01:05:41.702252" elapsed="2.647006"/>
-</kw>
-<test id="s1-t1" name="TC11003_การแก้ไขรายการสินค้าในรายการคำสั่งซื้อไม่สำเร็จ" line="11">
-<kw name="Input Username" owner="sale_history_keywords">
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-09-15T01:05:44.354718" level="INFO">Typing text 'BN' into text field 'css=input[name='username']'.</msg>
-<arg>css=input[name='username']</arg>
-<arg>${username}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-15T01:05:44.354718" elapsed="0.181586"/>
-</kw>
-<arg>${TC11003_USERNAME}</arg>
-<status status="PASS" start="2025-09-15T01:05:44.353717" elapsed="0.182587"/>
-</kw>
-<kw name="Input Password" owner="sale_history_keywords">
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-09-15T01:05:44.538811" level="INFO">Typing text '123' into text field 'css=input[name='password']'.</msg>
-<arg>css=input[name='password']</arg>
-<arg>${password}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-15T01:05:44.538255" elapsed="0.145851"/>
-</kw>
-<arg>${TC11003_PASSWORD}</arg>
-<status status="PASS" start="2025-09-15T01:05:44.537301" elapsed="0.147808"/>
-</kw>
-<kw name="Submit Credentials" owner="sale_history_keywords">
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-09-15T01:05:44.686109" level="INFO">Clicking button 'css=button[type='submit']'.</msg>
-<arg>css=button[type='submit']</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-15T01:05:44.686109" elapsed="0.167500"/>
-</kw>
-<status status="PASS" start="2025-09-15T01:05:44.685109" elapsed="0.168500"/>
-</kw>
-<kw name="Welcome Page Should Be Open" owner="sale_history_keywords">
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>xpath=//*[@id="root"]/div/aside/div/nav/div/a[2]</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" start="2025-09-15T01:05:44.855642" elapsed="0.243300"/>
-</kw>
-<status status="PASS" start="2025-09-15T01:05:44.854645" elapsed="0.245297"/>
-</kw>
-<kw name="Click Sales History Menu" owner="sale_history_keywords">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${TC11001_SALES_HISTORY_MENU}</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-09-15T01:05:45.101941" elapsed="0.078024"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-09-15T01:05:45.180943" level="INFO">Clicking element 'xpath=//*[@id="root"]/div/aside/div/nav/div/a[3]'.</msg>
-<arg>${TC11001_SALES_HISTORY_MENU}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-15T01:05:45.179965" elapsed="0.253761"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${TC11001_ORDER_TABLE}</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-09-15T01:05:45.435058" elapsed="0.246896"/>
-</kw>
-<status status="PASS" start="2025-09-15T01:05:45.100943" elapsed="0.581011"/>
-</kw>
-<kw name="Verify Order Table Is Displayed" owner="sale_history_keywords">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${TC11001_ORDER_TABLE}</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-09-15T01:05:45.683958" elapsed="0.025032"/>
-</kw>
-<kw name="Page Should Contain Element" owner="SeleniumLibrary">
-<msg time="2025-09-15T01:05:45.720507" level="INFO">Current page contains element 'xpath=//*[@id="root"]/div/div/main/div/div/div/div[3]/div/table'.</msg>
-<arg>${TC11001_ORDER_TABLE}</arg>
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<status status="PASS" start="2025-09-15T01:05:45.708990" elapsed="0.012962"/>
-</kw>
-<status status="PASS" start="2025-09-15T01:05:45.682938" elapsed="0.039014"/>
-</kw>
-<kw name="Click Order To Edit Invalid" owner="sale_history_keywords">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${TC11003_ORDER_ROW}</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-09-15T01:05:45.722958" elapsed="0.034504"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-09-15T01:05:45.757462" level="INFO">Clicking element 'xpath=//*[@id="root"]/div/div/main/div/div/div/div[3]/div/table/tbody/tr[1]/td[1]'.</msg>
-<arg>${TC11003_ORDER_ROW}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-15T01:05:45.757462" elapsed="0.156541"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${TC11003_EDIT_BUTTON}</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-09-15T01:05:45.915003" elapsed="0.033000"/>
-</kw>
-<arg>${TC11003_ORDER_ID}</arg>
-<status status="PASS" start="2025-09-15T01:05:45.722958" elapsed="0.225045"/>
-</kw>
-<kw name="Click Edit Button Invalid" owner="sale_history_keywords">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${TC11003_EDIT_BUTTON}</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-09-15T01:05:45.950004" elapsed="0.022999"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-09-15T01:05:45.974003" level="INFO">Clicking element 'xpath=//*[@id="root"]/div/div/main/div/div/div/div[4]/div/div[2]/div[2]/div[2]/div[1]/div/div/div/div[5]/button'.</msg>
-<arg>${TC11003_EDIT_BUTTON}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-15T01:05:45.974003" elapsed="0.155129"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-09-15T01:05:47.129856" level="INFO">Slept 1 second.</msg>
-<arg>1s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-09-15T01:05:46.129132" elapsed="1.000724"/>
-</kw>
-<status status="PASS" start="2025-09-15T01:05:45.949020" elapsed="1.181855"/>
-</kw>
-<kw name="Click Continue Button Invalid" owner="sale_history_keywords">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${TC11003_CONTINUE_BUTTON}</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-09-15T01:05:47.132015" elapsed="0.035834"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-09-15T01:05:47.168875" level="INFO">Clicking element 'xpath=/html/body/div[2]/div/div[6]/button[1]'.</msg>
-<arg>${TC11003_CONTINUE_BUTTON}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-15T01:05:47.167849" elapsed="0.133021"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${TC11003_PRICE_INPUT}</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-09-15T01:05:47.300870" elapsed="0.035217"/>
-</kw>
-<status status="PASS" start="2025-09-15T01:05:47.132015" elapsed="0.204072"/>
-</kw>
-<kw name="Input Invalid Price" owner="sale_history_keywords">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${TC11003_PRICE_INPUT}</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-09-15T01:05:47.338091" elapsed="0.031284"/>
-</kw>
-<kw name="Clear Element Text" owner="SeleniumLibrary">
-<arg>${TC11003_PRICE_INPUT}</arg>
-<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-15T01:05:47.369375" elapsed="0.073504"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-09-15T01:05:47.444258" level="INFO">Typing text '0' into text field 'xpath=//*[@id="root"]/div/div/main/div/div/div/div[5]/div/div[2]/div[3]/input'.</msg>
-<arg>${TC11003_PRICE_INPUT}</arg>
-<arg>${invalid_price}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-15T01:05:47.442879" elapsed="0.161190"/>
-</kw>
-<arg>${TC11003_INVALID_PRICE}</arg>
-<status status="PASS" start="2025-09-15T01:05:47.338091" elapsed="0.265978"/>
-</kw>
-<kw name="Click Save Changes Button Invalid" owner="sale_history_keywords">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${TC11003_SAVE_CHANGES_BUTTON}</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-09-15T01:05:47.605098" elapsed="0.033555"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-09-15T01:05:47.639657" level="INFO">Clicking element 'xpath=//*[@id="root"]/div/div/main/div/div/div/div[5]/div/div[2]/div[5]/button[2]'.</msg>
-<arg>${TC11003_SAVE_CHANGES_BUTTON}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-09-15T01:05:47.638653" elapsed="0.114159"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-09-15T01:05:49.754134" level="INFO">Slept 2 seconds.</msg>
-<arg>2s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-09-15T01:05:47.752812" elapsed="2.001322"/>
-</kw>
-<status status="PASS" start="2025-09-15T01:05:47.605098" elapsed="2.149580"/>
-</kw>
-<kw name="Verify Error Message" owner="sale_history_keywords">
-<kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2025-09-15T01:05:50.076053" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-134.png"&gt;&lt;img src="selenium-screenshot-134.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2025-09-15T01:05:50.076053" level="FAIL">Page should have contained text 'กรุณากรอกข้อมูลให้ครบถ้วน' but did not.</msg>
-<arg>${error_message}</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<status status="FAIL" start="2025-09-15T01:05:49.755701" elapsed="0.323674">Page should have contained text 'กรุณากรอกข้อมูลให้ครบถ้วน' but did not.</status>
-</kw>
-<arg>${TC11003_ERROR_MESSAGE}</arg>
-<status status="FAIL" start="2025-09-15T01:05:49.754678" elapsed="0.324697">Page should have contained text 'กรุณากรอกข้อมูลให้ครบถ้วน' but did not.</status>
-</kw>
-<doc>ตรวจสอบว่าสามารถแก้ไขรายการสินค้าในรายการคำสั่งซื้อไม่สำเร็จ</doc>
-<tag>Edit Product Invalid</tag>
-<tag>Sales History</tag>
-<tag>TC11003</tag>
-<status status="FAIL" start="2025-09-15T01:05:44.349258" elapsed="5.730920">Page should have contained text 'กรุณากรอกข้อมูลให้ครบถ้วน' but did not.</status>
+<test id="s1-t1" name="TC2001_สร้างโปรโมชั่นจากการแจ้งเตือน" line="14">
+<doc>ตรวจสอบและสร้างโปรโมชั่นจากการแจ้งเตือนตามสเปก UC-02/TC-2001</doc>
+<tag>E2E</tag>
+<tag>Notification</tag>
+<tag>Promotion</tag>
+<tag>TC2001</tag>
+<status status="FAIL" start="2025-09-16T00:31:59.766794" elapsed="0.003005">Parent suite setup failed:
+Multiple keywords with name 'Open Browser To Login Page' found. Give the full name of the keyword you want to use:
+    notification_keywords.Open Browser To Login Page
+    promotion_keywords.Open Browser To Login Page</status>
 </test>
 <kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="PASS" start="2025-09-15T01:05:50.082182" elapsed="2.422748"/>
+<status status="PASS" start="2025-09-16T00:31:59.771771" elapsed="0.000000"/>
 </kw>
-<status status="FAIL" start="2025-09-15T01:05:41.009512" elapsed="11.496424"/>
+<status status="FAIL" start="2025-09-16T00:31:59.171323" elapsed="0.600448">Suite setup failed:
+Multiple keywords with name 'Open Browser To Login Page' found. Give the full name of the keyword you want to use:
+    notification_keywords.Open Browser To Login Page
+    promotion_keywords.Open Browser To Login Page</status>
 </suite>
 <statistics>
 <total>
 <stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="0" fail="1" skip="0">Edit Product Invalid</stat>
-<stat pass="0" fail="1" skip="0">Sales History</stat>
-<stat pass="0" fail="1" skip="0">TC11003</stat>
+<stat pass="0" fail="1" skip="0">E2E</stat>
+<stat pass="0" fail="1" skip="0">Notification</stat>
+<stat pass="0" fail="1" skip="0">Promotion</stat>
+<stat pass="0" fail="1" skip="0">TC2001</stat>
 </tag>
 <suite>
-<stat name="TC11003" id="s1" pass="0" fail="1" skip="0">TC11003</stat>
+<stat name="TC2001" id="s1" pass="0" fail="1" skip="0">TC2001</stat>
 </suite>
 </statistics>
 <errors>

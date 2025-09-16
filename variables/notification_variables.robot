@@ -2,7 +2,7 @@
 # --- Base Configuration ---
 ${BASE_URL}           http://localhost:5173
 ${BROWSER}            chrome
-${VALID_USER}         1
+${VALID_USER}         BN
 ${VALID_PASSWORD}     123
 ${TIMEOUT}            20s
 
@@ -56,3 +56,5 @@ ${NOTIFICATION_VIEW_MESSAGE}       ดูรายการแจ้งเตื
 ${DISPOSE_SUCCESS_TEXT}            สำเร็จ สร้างออเดอร์ตัดจำหน่ายสินค้าสำเร็จเรียบร้อย
 ${PURCHASE_SUCCESS_TEXT}           สำเร็จ สร้างใบสั่งซื้อสำเร็จ
 ${PO_ERROR_TEXT}                   กรุณากรอกจำนวนที่สั่งซื้อ
+
+

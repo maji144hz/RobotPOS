@@ -1,7 +1,7 @@
 *** Variables ***
 ${BASE_URL}           http://localhost:5173
 ${BROWSER}            chrome
-${VALID_USER}         1
+${VALID_USER}         BN
 ${VALID_PASSWORD}     123
 ${TIMEOUT}            20s
 
@@ -113,3 +113,5 @@ ${TC6009_ORIGINAL_PRICE}        15
 ${TC6009_LOT_LOCATOR}           xpath=//*[@id="root"]/div/div/main/div/div/div[3]/div/div[1]/div[3]/div/label[1]
 ${TC6009_DISCOUNTED_PRICE}      ${EMPTY}
 ${TC6009_ERROR_MESSAGE}         กรุณากรอกข้อมูลให้ครบถ้วน
+
+
