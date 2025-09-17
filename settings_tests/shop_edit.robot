@@ -13,21 +13,19 @@ Resource          ../keywords/settings_keywords.robot
 
 *** Test Cases ***
 แก้ไขข้อมูลร้านค้า (ถ่ายภาพทุกขั้นตอน)
-    [Documentation]    ล็อกอิน → ไปหน้า /setting/shop → แคปหน้าจอ → กดแก้ไข → กรอกชื่อ/ที่อยู่ → แคปหน้าจอ → กดยืนยัน → แคปหน้าจอ
-    # 1) หน้า "การตั้งค่า" ของร้าน
     Wait Until Element Is Visible       ${MENU_SETTINGS}    ${TIMEOUT}
     Click Element                       ${MENU_SETTINGS}
     Wait Table Idle
     Create Directory                    ${SCREEN_DIR}
     Capture Page Screenshot             ${SCREEN_DIR}${/}shop_settings_page.png
 
-    # 2) กด "แก้ไขข้อมูล"
+   
     Wait Until Element Is Visible       ${BTN_EDIT}    ${TIMEOUT}
     Scroll Element Into View            ${BTN_EDIT}
     Click Element                       ${BTN_EDIT}
     Wait Table Idle
 
-    # 3) กรอกฟอร์ม
+   
     Wait Until Element Is Visible       ${INPUT_SHOP_NAME}       ${TIMEOUT}
     Clear Element Text                  ${INPUT_SHOP_NAME}
     Input Text                          ${INPUT_SHOP_NAME}       ร้านทดสอบ โปโรเจค POS
@@ -38,7 +36,7 @@ Resource          ../keywords/settings_keywords.robot
 
     Capture Page Screenshot             ${SCREEN_DIR}${/}shop_edit_filled.png
 
-    # 4) ยืนยัน
+   
     Scroll Element Into View            ${BTN_SUBMIT}
     Click Element                       ${BTN_SUBMIT}
     Click If Exists                     ${SWAL_CONFIRM}
