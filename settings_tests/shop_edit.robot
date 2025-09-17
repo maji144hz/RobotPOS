@@ -12,7 +12,6 @@ Resource          ../keywords/common_keywords.robot
 Resource          ../keywords/settings_keywords.robot
 
 *** Test Cases ***
-แก้ไขข้อมูลร้านค้า (ถ่ายภาพทุกขั้นตอน)
     Wait Until Element Is Visible       ${MENU_SETTINGS}    ${TIMEOUT}
     Click Element                       ${MENU_SETTINGS}
     Wait Table Idle
