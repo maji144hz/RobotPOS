@@ -34,7 +34,10 @@ Resource          ../keywords/products_keywords.robot
     Type    ${INPUT_PRICE_PACK}               120
     Type    ${INPUT_INIT_QTY}                 120
     Type    ${INPUT_INIT_PURCHASE}            6
+    Capture Page Screenshot
 
     Click Save Product
+    Capture Page Screenshot
+    Page Should Contain   สร้างสินค้าสำเร็จ!
     Click If Exists                      ${SWAL_CONFIRM}
     Wait Table Idle
