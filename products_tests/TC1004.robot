@@ -25,6 +25,10 @@ Resource          ../keywords/products_keywords.robot
     Type    ${INPUT_NAME}                     น้ำยาล้างจาน
     Type    ${INPUT_DESC}                     น้ำยาล้างจานของดี
 
+    Capture Page Screenshot
+
     Click Save Product
+    Capture Page Screenshot
+    Page Should Contain   สร้างสินค้าสำเร็จ!
     Click If Exists                      ${SWAL_CONFIRM}
     Wait Table Idle
