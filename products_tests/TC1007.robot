@@ -36,6 +36,10 @@ Resource          ../keywords/products_keywords.robot
     Type    ${INPUT_INIT_PURCHASE}            6
     Type    ${INPUT_INIT_EXPDATE}             11/01/2014
 
+    Capture Page Screenshot
+
     Click Save Product
+    Capture Page Screenshot
+    Page Should Contain   สร้างสินค้าสำเร็จ!
     Click If Exists                      ${SWAL_CONFIRM}
     Wait Table Idle
