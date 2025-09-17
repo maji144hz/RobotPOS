@@ -36,15 +36,12 @@ Resource          ../keywords/products_keywords.robot
     Type    ${INPUT_INIT_PURCHASE}            6
     Type    ${INPUT_INIT_EXPDATE}             ${EXPDATE_VALUE}
 
+    Capture Page Screenshot
+
     Click Save Product
+    Capture Page Screenshot
+    Page Should Contain   สร้างสินค้าสำเร็จ!
     Click If Exists                      ${SWAL_CONFIRM}
     Wait Table Idle
 
-*** Keywords ***
-Login Using Resource
-    Go To Login Page
-    Input Username     ${VALID USER}
-    Input Password     ${VALID PASSWORD}
-    Submit Credentials
-    Welcome Page Should Be Open
-    Sleep    0.2s
+
