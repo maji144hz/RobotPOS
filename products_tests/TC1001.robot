@@ -32,7 +32,11 @@ Resource          ../keywords/products_keywords.robot
     Type    ${INPUT_PACK_SIZE}                12
     Type    ${INPUT_PRICE_UNIT}               10
     Type    ${INPUT_PRICE_PACK}               120
-
+    Execute Javascript    window.scrollTo(0, 0)
+    Capture Page Screenshot
+    Execute Javascript    window.scrollTo(0, document.body.scrollHeight)
+    Capture Page Screenshot
+    
     Click Save Product
     Click If Exists                      ${SWAL_CONFIRM}
     Wait Table Idle
