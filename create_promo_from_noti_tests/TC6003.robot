@@ -4,18 +4,15 @@ Resource   ../keywords/promo_from_noti_keywords.robot
 Resource   ../variables/promo_from_noti_variables.robot
 
 *** Test Cases ***
-TC6003 Create Promotion Without Lot
-    [Documentation]    กรณีไม่เลือกล็อตสินค้า → ต้องเจอ error แจ้งเตือน
+TC6003 Create Promotion Without Price
+    [Documentation]    กรณีไม่กรอกราคา → ต้องเจอ error
     Open Browser To Login Page
     Login Using Resource
     Open Notification Panel
     Filter Expiring Notifications
     Select Promotion Item
     Click Promotion Action Icon
-
-    # --- ไม่เลือกล็อต ---
-    Fill Promotion Form    ${PROMOTION_NAME}    ${PROMOTION_START_DATE}    ${PROMOTION_END_DATE}    ${PROMOTION_DISCOUNTED_PRICE}
+    # กรอกชื่อและวันที่ แต่ไม่กรอกราคา
+    Fill Promotion Form    ${PROMOTION_NAME}    ${PROMOTION_START_DATE}    ${PROMOTION_END_DATE}    ${EMPTY}
     Click Button    id=create-promotion-submit-button
-
-    # --- ตรวจสอบข้อความ error ---
-    Wait Until Page Contains Match    กรุณาเลือกล็อต*
+    Page Should Contain    กรุณากรอกข้อมูลให้ครบถ้วน
