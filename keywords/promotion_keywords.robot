@@ -147,8 +147,6 @@ Confirm Delete Promotion
     
 
 
-
-
 # ===== Print Promotions (TC7004) =====
 Open Print Promotions Modal
     Wait Until Element Is Visible    id=${PRINT_BUTTON_ID}    ${TIMEOUT}

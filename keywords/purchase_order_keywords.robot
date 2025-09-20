@@ -92,9 +92,104 @@ Submit Purchase Order And Verify
     ${ok2}=    Run Keyword And Return Status    Page Should Contain    สำเร็จ
     Should Be True    ${ok1} or ${ok2}    ไม่พบข้อความว่าสร้างใบสั่งซื้อสำเร็จ
 
+# ===== Edit Purchase Order 3002 =====
+Search And Open Purchase Order
+    [Arguments]    ${po_number}
+    Wait Until Element Is Visible    ${PO_SEARCH_INPUT}    ${TIMEOUT}
+    Clear Element Text    ${PO_SEARCH_INPUT}
+    Input Text            ${PO_SEARCH_INPUT}    ${po_number}
+    Sleep    1s
+    Click Element         ${PO_EDIT_BUTTON}
+
+Fill Edited PO Quantity
+    [Arguments]    ${qty}
+    Wait Until Element Is Visible    ${PO_QUANTITY_INPUT_EDIT}    ${TIMEOUT}
+    Scroll Element Into View         ${PO_QUANTITY_INPUT_EDIT}
+    Click Element                    ${PO_QUANTITY_INPUT_EDIT}
+    Clear Element Text               ${PO_QUANTITY_INPUT_EDIT}
+    Input Text                       ${PO_QUANTITY_INPUT_EDIT}    ${qty}
+    Press Keys                       ${PO_QUANTITY_INPUT_EDIT}    TAB
+    ${filled}=    Get Value          ${PO_QUANTITY_INPUT_EDIT}
+    Should Be Equal    ${filled}    ${qty}   จำนวนสินค้าที่กรอกไม่ตรงกับค่าที่ต้องการ
+
+Submit Edited PO And Verify
+    Wait Until Element Is Visible    ${PO_SUBMIT_BUTTON_EDIT}    ${TIMEOUT}
+    Click Element                    ${PO_SUBMIT_BUTTON_EDIT}
+    ${ok1}=    Run Keyword And Return Status    Page Should Contain    ${EDIT_SUCCESS_TEXT}
+    ${ok2}=    Run Keyword And Return Status    Page Should Contain    สำเร็จ
+    Should Be True    ${ok1} or ${ok2}    ไม่พบข้อความว่าแก้ไขใบสั่งซื้อสำเร็จ
+
+# ===== Edit Purchase Order 3003 =====
+Search And Open PO For TC3003
+    [Arguments]    ${po_number}
+    Wait Until Element Is Visible    ${PO_SEARCH_INPUT}    30s
+    Clear Element Text               ${PO_SEARCH_INPUT}
+    Input Text                       ${PO_SEARCH_INPUT}    ${po_number}
+    Sleep                             1s
+    Click Element                    ${PO_EDIT_BUTTON}
 
 
+Fill Edited PO Price For TC3003
+    [Arguments]    ${price}
+    Wait Until Element Is Visible    ${PO_PRICE_INPUT_EDIT}    30s
+    Scroll Element Into View         ${PO_PRICE_INPUT_EDIT}
+    Click Element                    ${PO_PRICE_INPUT_EDIT}
+    Clear Element Text               ${PO_PRICE_INPUT_EDIT}
+    Input Text                       ${PO_PRICE_INPUT_EDIT}    ${price}
+    Press Keys                       ${PO_PRICE_INPUT_EDIT}    TAB
+    Sleep                             0.5s
 
+
+Submit Edited PO And Verify For TC3003
+    Wait Until Element Is Visible    ${PO_SUBMIT_BUTTON_EDIT}    20s
+    Click Element                    ${PO_SUBMIT_BUTTON_EDIT}
+    ${ok1}=    Run Keyword And Return Status    Page Should Contain    ${TC3003EDIT_SUCCESS_TEXT}
+    ${ok2}=    Run Keyword And Return Status    Page Should Contain    สำเร็จ
+    Should Be True    ${ok1} or ${ok2}    ไม่พบข้อความว่าแก้ไขใบสั่งซื้อสำเร็จ
+
+# ===== Edit Purchase Order 3004 =====
+Search And Open PO For TC3004
+    [Arguments]    ${po_number}
+    Wait Until Element Is Visible    ${PO_SEARCH_INPUT}    30s
+    Clear Element Text               ${PO_SEARCH_INPUT}
+    Input Text                       ${PO_SEARCH_INPUT}    ${po_number}
+    Sleep                             1s
+    Click Element                    ${PO_EDIT_BUTTON}
+
+Select Edited PO Supplier For TC3004
+    [Arguments]    ${supplier}
+    Wait Until Element Is Visible    ${PO_SUPPLIER_SELECT_EDIT}    30s
+    Scroll Element Into View         ${PO_SUPPLIER_SELECT_EDIT}
+    Click Element                    ${PO_SUPPLIER_SELECT_EDIT}
+    Select From List By Label        ${PO_SUPPLIER_SELECT_EDIT}    ${supplier}
+    Sleep                             0.5s
+
+Submit Edited PO And Verify For TC3004
+    Wait Until Element Is Visible    ${PO_SUBMIT_BUTTON_EDIT}    20s
+    Click Element                    ${PO_SUBMIT_BUTTON_EDIT}
+    ${ok1}=    Run Keyword And Return Status    Page Should Contain    ${TC3004EDIT_SUCCESS_TEXT}
+    ${ok2}=    Run Keyword And Return Status    Page Should Contain    สำเร็จ
+    Should Be True    ${ok1} or ${ok2}    ไม่พบข้อความว่าแก้ไขใบสั่งซื้อสำเร็จ
+
+# ===== Delete Purchase Order 3005 =====
+Search And Delete PO For TC3005
+    [Arguments]    ${po_number}
+    Wait Until Element Is Visible    ${PO_SEARCH_INPUT}    30s
+    Clear Element Text               ${PO_SEARCH_INPUT}
+    Input Text                       ${PO_SEARCH_INPUT}    ${po_number}
+    Sleep                             1s
+    # กดปุ่มดูรายละเอียดใบสั่ง (view order) ในรายการ PO
+    ${view_btn}=    Set Variable    xpath=//button[contains(@id,'po-view-order-button')]
+    Wait Until Element Is Visible    ${view_btn}    10s
+    Click Element                    ${view_btn}
+
+Confirm Delete PO For TC3005
+    # รอให้ SweetAlert2 modal โผล่
+    Wait Until Element Is Visible    css=div.swal2-popup    10s
+    # กดปุ่ม "ลบ" ใน SweetAlert2
+    Click Element                    css=button.swal2-confirm.swal2-styled
+    Sleep                             1s
+    
 # ===== Negative Keywords: TC3006 =====
 Fill PO Quantity And Price TC3006
     [Arguments]    ${qty}    ${price}
@@ -115,7 +210,6 @@ Submit PO And Verify Error TC3006
     Click Element                    ${PO_SUBMIT_BUTTON}
     Wait Until Page Contains         ${error_message}         ${TIMEOUT}
 
-
 # ===== Negative Keywords: TC3007 =====
 Fill PO Quantity TC4007
     [Arguments]    ${qty}
@@ -133,4 +227,17 @@ Submit PO And Verify Error TC3007
     Wait Until Element Is Visible    ${PO_SUBMIT_BUTTON}    ${TIMEOUT}
     Click Element                    ${PO_SUBMIT_BUTTON}
     Wait Until Element Contains      xpath=//div[contains(@class,'ant-message-notice-content')]    ${error_message}    ${TIMEOUT}
+
+# ===== Negative Keywords: TC3008 =====
+Search And View PO For TC3008
+    [Arguments]    ${po_number}    ${po_id}
+    Wait Until Element Is Visible    ${PO_SEARCH_INPUT}    30s
+    Clear Element Text               ${PO_SEARCH_INPUT}
+    Input Text                       ${PO_SEARCH_INPUT}    ${po_number}
+    Sleep                             2s
+    ${view_btn}=                      Set Variable    xpath=//button[@id='po-view-order-button-${po_id}']
+    Wait Until Element Is Visible    ${view_btn}    10s
+    Click Element                    ${view_btn}
+
+
 
