@@ -95,8 +95,8 @@ Submit Purchase Order And Verify
 
 
 
-# ===== Negative Keywords: TC4004 =====
-Fill PO Quantity And Price TC4004
+# ===== Negative Keywords: TC3006 =====
+Fill PO Quantity And Price TC3006
     [Arguments]    ${qty}    ${price}
     Wait Until Element Is Visible    ${PO_QUANTITY_INPUT}    ${TIMEOUT}
     Scroll Element Into View         ${PO_QUANTITY_INPUT}
@@ -107,7 +107,7 @@ Fill PO Quantity And Price TC4004
     Clear Element Text               ${PO_PRICE_INPUT}
     Input Text                       ${PO_PRICE_INPUT}       ${price}
 
-Submit PO And Verify Error TC4004
+Submit PO And Verify Error TC3006
     [Arguments]    ${supplier}    ${error_message}
     # ไม่เลือก supplier
     Run Keyword If    '${supplier}' != ''    Select From List By Label    ${PO_SUPPLIER_SELECT}    ${supplier}
@@ -115,15 +115,16 @@ Submit PO And Verify Error TC4004
     Click Element                    ${PO_SUBMIT_BUTTON}
     Wait Until Page Contains         ${error_message}         ${TIMEOUT}
 
-# ===== Negative Keywords: TC4005 =====
-Fill PO Quantity TC4005
+
+# ===== Negative Keywords: TC3007 =====
+Fill PO Quantity TC4007
     [Arguments]    ${qty}
     Wait Until Element Is Visible    ${PO_QUANTITY_INPUT}    ${TIMEOUT}
     Scroll Element Into View         ${PO_QUANTITY_INPUT}
     Clear Element Text               ${PO_QUANTITY_INPUT}
     Input Text                       ${PO_QUANTITY_INPUT}    ${qty}
 
-Submit PO And Verify Error TC4005
+Submit PO And Verify Error TC3007
     [Arguments]    ${price}    ${supplier}    ${error_message}
     # กรอกราคาเฉพาะถ้าไม่ว่าง
     Run Keyword If    '${price}' != ''    Input Text    ${PO_PRICE_INPUT}    ${price}
@@ -133,14 +134,3 @@ Submit PO And Verify Error TC4005
     Click Element                    ${PO_SUBMIT_BUTTON}
     Wait Until Element Contains      xpath=//div[contains(@class,'ant-message-notice-content')]    ${error_message}    ${TIMEOUT}
 
-# ===== Negative Keywords: TC4006 =====
-Add Duplicate Product To PO
-    # คลิกปุ่มเพิ่มสินค้าเดิมอีกครั้ง
-    Wait Until Element Is Visible    id=product-list-add-button-6855aa22c16f3c50f07fc169    20s
-    Scroll Element Into View         id=product-list-add-button-6855aa22c16f3c50f07fc169
-    Click Element                    id=product-list-add-button-6855aa22c16f3c50f07fc169
-    Sleep                             1s    # ให้ toast แสดง
-
-Verify Duplicate Product Error
-    [Arguments]    ${error_message}=${TC4006_DUPLICATE_ERROR}
-    Wait Until Page Contains         ${error_message}    timeout=30s

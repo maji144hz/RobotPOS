@@ -8,7 +8,7 @@ Suite Setup       Open Browser To Login Page
 Suite Teardown    Close All Browsers
 
 *** Test Cases ***
-ปริ้นบาร์โค้ดโปรโมชั่นทั้งหมด (TC6004)
+ปริ้นบาร์โค้ดโปรโมชั่นทั้งหมด (TC7004)
     # Login
     Login Using Resource
 

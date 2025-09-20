@@ -8,15 +8,16 @@ Suite Setup       Open Browser To Login Page
 Suite Teardown    Close All Browsers
 
 *** Test Cases ***
-ลบโปรโมชั่น (TC6003)
+ลบโปรโมชั่น (TC7003)
     # Login
     Login Using Resource
 
-    # ไปหน้าโปรโมชัน ค้นหา และเปิด modal ลบ
+    # ไปหน้าโปรโมชั่น และค้นหาชื่อโปรโมชั่นที่จะลบ
     Go To Promotion Page
-    Search Promotion By Name      ${DELETE_PROMOTION_SEARCH}
+    Search Promotion By Name    ${DELETE_PROMOTION_SEARCH}
+
+    # เปิด modal ลบ
     Open Delete Promotion Modal
 
-    # กดยืนยันลบ
+    # ยืนยันการลบ และตรวจผล
     Confirm Delete Promotion
-

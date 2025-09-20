@@ -38,23 +38,21 @@ ${PO_SUPPLIER_NAME}   บริษัท ฟู๊ดซัพพลายเอ
 # --- Expected Messages ---
 ${PURCHASE_SUCCESS_TEXT}   สำเร็จ สร้างใบสั่งซื้อสำเร็จ
 
-# --- Negative Test Case: TC4004 (ไม่เลือกซัพพลายเออร์) ---
-${TC4004_PRODUCT}          ข้าวโพดหวานกระป๋อง
-${TC4004_PRICE}            150
-${TC4004_QUANTITY}         5
-${TC4004_SUPPLIER}         ${EMPTY}    # ไม่เลือกซัพพลายเออร์
-${TC4004_ERROR_MESSAGE}    กรุณาเลือกซัพพลายเออร์
+# --- Negative Test Case: TC3006 (ไม่เลือกซัพพลายเออร์) ---
+${TC3006_PRODUCT}          ข้าวโพดหวานกระป๋อง
+${TC3006_PRICE}            150
+${TC3006_QUANTITY}         5
+${TC3006_SUPPLIER}         ${EMPTY}    # ไม่เลือกซัพพลายเออร์
+${TC3006_ERROR_MESSAGE}    กรุณาเลือกซัพพลายเออร์
 
 # --- Negative Test Case: TC4005 (ไม่กรอกราคาซื้อ) ---
-${TC4005_PRODUCT}       ข้าวโพดหวานกระป๋อง
-${TC4005_QUANTITY}      5
-${TC4005_PRICE}         ${EMPTY}        # ไม่กรอกราคาซื้อ
-${TC4005_SUPPLIER}      บริษัท ฟู๊ดซัพพลายเออร์ จำกัด
-${TC4005_ERROR_MESSAGE}  กรุณากรอกราคาซื้อกรุณากรอกจำนวนและราคาซื้อให้ครบถ้วน
+${TC3007_PRODUCT}       ข้าวโพดหวานกระป๋อง
+${TC3007_QUANTITY}      5
+${TC3007_PRICE}         ${EMPTY}        # ไม่กรอกราคาซื้อ
+${TC3007_SUPPLIER}      บริษัท ฟู๊ดซัพพลายเออร์ จำกัด
+${TC3007_ERROR_MESSAGE}  กรุณากรอกราคาซื้อกรุณากรอกจำนวนและราคาซื้อให้ครบถ้วน
 
-# --- Negative Test Case: TC4006 (เพิ่มสินค้าซ้ำ) ---
-${TC4006_PRODUCT_BUTTON}    id=product-list-add-button-6855aa22c16f3c50f07fc169
-${TC4006_DUPLICATE_ERROR}    สินค้านี้ถูกเพิ่มไปแล้ว
+
 
 
 

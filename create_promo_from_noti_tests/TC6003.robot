@@ -4,7 +4,7 @@ Resource   ../keywords/promo_from_noti_keywords.robot
 Resource   ../variables/promo_from_noti_variables.robot
 
 *** Test Cases ***
-TC2003 Create Promotion Without Lot
+TC6003 Create Promotion Without Lot
     [Documentation]    กรณีไม่เลือกล็อตสินค้า → ต้องเจอ error แจ้งเตือน
     Open Browser To Login Page
     Login Using Resource

@@ -1,46 +1,238 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.12.5 on win32)" generated="2025-09-16T00:31:59.169323" rpa="false" schemaversion="5">
-<suite id="s1" name="TC2001" source="D:\RobotPOS\notification_tests\TC2001.robot">
-<kw name="Open Browser To Login Page" type="SETUP">
-<msg time="2025-09-16T00:31:59.765795" level="FAIL">Multiple keywords with name 'Open Browser To Login Page' found. Give the full name of the keyword you want to use:
-    notification_keywords.Open Browser To Login Page
-    promotion_keywords.Open Browser To Login Page</msg>
-<status status="FAIL" start="2025-09-16T00:31:59.765795" elapsed="0.000000">Multiple keywords with name 'Open Browser To Login Page' found. Give the full name of the keyword you want to use:
-    notification_keywords.Open Browser To Login Page
-    promotion_keywords.Open Browser To Login Page</status>
+<robot generator="Robot 7.3.2 (Python 3.12.5 on win32)" generated="2025-09-19T22:28:18.458142" rpa="false" schemaversion="5">
+<suite id="s1" name="TC4007" source="D:\RobotPOS\purchase_order_tests\TC4007.robot">
+<test id="s1-t1" name="TC4007 Verify Add Product To PO Without Price" line="7">
+<kw name="Open Browser To Login Page" owner="purchase_order_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-19T22:28:19.183417" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-19T22:28:19.182366" elapsed="2.114291"/>
 </kw>
-<test id="s1-t1" name="TC2001_สร้างโปรโมชั่นจากการแจ้งเตือน" line="14">
-<doc>ตรวจสอบและสร้างโปรโมชั่นจากการแจ้งเตือนตามสเปก UC-02/TC-2001</doc>
-<tag>E2E</tag>
-<tag>Notification</tag>
-<tag>Promotion</tag>
-<tag>TC2001</tag>
-<status status="FAIL" start="2025-09-16T00:31:59.766794" elapsed="0.003005">Parent suite setup failed:
-Multiple keywords with name 'Open Browser To Login Page' found. Give the full name of the keyword you want to use:
-    notification_keywords.Open Browser To Login Page
-    promotion_keywords.Open Browser To Login Page</status>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-09-19T22:28:21.296657" elapsed="0.471646"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=input[name="username"]</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-19T22:28:21.768303" elapsed="0.053931"/>
+</kw>
+<status status="PASS" start="2025-09-19T22:28:19.180317" elapsed="2.641917"/>
+</kw>
+<kw name="Login Using Resource" owner="purchase_order_keywords">
+<kw name="Input Username" owner="purchase_order_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-19T22:28:21.825227" level="INFO">Typing text 'BN' into text field 'css=input[name='username']'.</msg>
+<arg>css=input[name='username']</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-19T22:28:21.824228" elapsed="0.189426"/>
+</kw>
+<arg>${VALID_USER}</arg>
+<status status="PASS" start="2025-09-19T22:28:21.824228" elapsed="0.189426"/>
+</kw>
+<kw name="Input Password" owner="purchase_order_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-19T22:28:22.015655" level="INFO">Typing text '123' into text field 'css=input[name='password']'.</msg>
+<arg>css=input[name='password']</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-19T22:28:22.014666" elapsed="0.149293"/>
+</kw>
+<arg>${VALID_PASSWORD}</arg>
+<status status="PASS" start="2025-09-19T22:28:22.014666" elapsed="0.149293"/>
+</kw>
+<kw name="Submit Credentials" owner="purchase_order_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-09-19T22:28:22.164961" level="INFO">Clicking button 'css=button[type='submit']'.</msg>
+<arg>css=button[type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-19T22:28:22.164961" elapsed="0.145757"/>
+</kw>
+<status status="PASS" start="2025-09-19T22:28:22.163959" elapsed="0.146759"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-09-19T22:28:23.312203" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-09-19T22:28:22.311737" elapsed="1.000466"/>
+</kw>
+<status status="PASS" start="2025-09-19T22:28:21.823228" elapsed="1.489487"/>
+</kw>
+<kw name="Go To Purchase Order Page" owner="purchase_order_keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${BTN_MANAGE}</arg>
+<arg>15s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-19T22:28:23.313729" elapsed="0.037231"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-09-19T22:28:23.351976" level="INFO">Clicking element 'xpath=//button[contains(.,'จัดการ')]'.</msg>
+<arg>${BTN_MANAGE}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-19T22:28:23.350960" elapsed="0.115403"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${BTN_CREATE_PO}</arg>
+<arg>15s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-19T22:28:23.467363" elapsed="0.036075"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-09-19T22:28:23.503438" level="INFO">Clicking element 'xpath=//a[contains(.,'จัดการใบสั่งของ')]'.</msg>
+<arg>${BTN_CREATE_PO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-19T22:28:23.503438" elapsed="0.143441"/>
+</kw>
+<status status="PASS" start="2025-09-19T22:28:23.312715" elapsed="0.335186"/>
+</kw>
+<kw name="Open Create Purchase Order Form" owner="purchase_order_keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=create-purchase-order-button</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-19T22:28:23.648906" elapsed="0.258006"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-09-19T22:28:23.907912" level="INFO">Clicking element 'id=create-purchase-order-button'.</msg>
+<arg>id=create-purchase-order-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-19T22:28:23.907912" elapsed="0.194301"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${PRODUCT_SEARCH_INPUT}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-19T22:28:24.102213" elapsed="0.079549"/>
+</kw>
+<status status="PASS" start="2025-09-19T22:28:23.647901" elapsed="0.534861"/>
+</kw>
+<kw name="Search And Add Product To PO" owner="purchase_order_keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${PRODUCT_SEARCH_INPUT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-19T22:28:24.184204" elapsed="0.046287"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${PRODUCT_SEARCH_INPUT}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-19T22:28:24.231512" elapsed="0.056927"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-19T22:28:24.289439" level="INFO">Typing text 'ข้าวโพดหวานกระป๋อง' into text field 'id=product-list-search-input'.</msg>
+<arg>${PRODUCT_SEARCH_INPUT}</arg>
+<arg>${keyword}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-19T22:28:24.289439" elapsed="0.202525"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-09-19T22:28:25.493148" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-09-19T22:28:24.492926" elapsed="1.000222"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-09-19T22:28:25.494173" level="INFO">Clicking element 'css=[id^='product-list-add-button']'.</msg>
+<arg>${PRODUCT_ADD_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-19T22:28:25.493148" elapsed="0.120905"/>
+</kw>
+<arg>${TC4007_PRODUCT}</arg>
+<status status="PASS" start="2025-09-19T22:28:24.182762" elapsed="1.431291"/>
+</kw>
+<kw name="Fill PO Quantity TC4007" owner="purchase_order_keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${PO_QUANTITY_INPUT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-19T22:28:25.615426" elapsed="0.031819"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${PO_QUANTITY_INPUT}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2025-09-19T22:28:25.648242" elapsed="0.310195"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${PO_QUANTITY_INPUT}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-19T22:28:25.959432" elapsed="0.052001"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-19T22:28:26.012847" level="INFO">Typing text '5' into text field 'xpath=//*[@id="root"]/div/div/main/div/div/div[2]/div[2]/div/div[2]/div[1]/div[2]/div[2]/div/div[1]/input'.</msg>
+<arg>${PO_QUANTITY_INPUT}</arg>
+<arg>${qty}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-19T22:28:26.012847" elapsed="0.122038"/>
+</kw>
+<arg>${TC4007_QUANTITY}</arg>
+<status status="PASS" start="2025-09-19T22:28:25.614053" elapsed="0.520832"/>
+</kw>
+<kw name="Submit PO And Verify Error TC4007" owner="purchase_order_keywords">
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${price}' != ''</arg>
+<arg>Input Text</arg>
+<arg>${PO_PRICE_INPUT}</arg>
+<arg>${price}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-09-19T22:28:26.136862" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Select From List By Label" owner="SeleniumLibrary">
+<msg time="2025-09-19T22:28:26.148080" level="INFO">Selecting options from selection list 'xpath=//*[@id="create-po-supplier-select"]' by label บริษัท ฟู๊ดซัพพลายเออร์ จำกัด.</msg>
+<arg>${PO_SUPPLIER_SELECT}</arg>
+<arg>${supplier}</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<status status="PASS" start="2025-09-19T22:28:26.148080" elapsed="0.189946"/>
+</kw>
+<arg>'${supplier}' != ''</arg>
+<arg>Select From List By Label</arg>
+<arg>${PO_SUPPLIER_SELECT}</arg>
+<arg>${supplier}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-09-19T22:28:26.137835" elapsed="0.201360"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${PO_SUBMIT_BUTTON}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-19T22:28:26.339195" elapsed="0.028835"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-09-19T22:28:26.369084" level="INFO">Clicking element 'id=create-po-submit-button'.</msg>
+<arg>${PO_SUBMIT_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-19T22:28:26.368030" elapsed="0.108756"/>
+</kw>
+<kw name="Wait Until Element Contains" owner="SeleniumLibrary">
+<msg time="2025-09-19T22:28:46.777702" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-135.png"&gt;&lt;img src="selenium-screenshot-135.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-09-19T22:28:46.777702" level="FAIL">Element with locator 'xpath=//div[contains(@class,'ant-message-notice-content')]' not found.</msg>
+<arg>xpath=//div[contains(@class,'ant-message-notice-content')]</arg>
+<arg>${error_message}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="FAIL" start="2025-09-19T22:28:26.476786" elapsed="20.405690">Element with locator 'xpath=//div[contains(@class,'ant-message-notice-content')]' not found.</status>
+</kw>
+<arg>${TC4007_PRICE}</arg>
+<arg>${TC4007_SUPPLIER}</arg>
+<arg>${TC4007_ERROR_MESSAGE}</arg>
+<status status="FAIL" start="2025-09-19T22:28:26.135862" elapsed="20.746614">Element with locator 'xpath=//div[contains(@class,'ant-message-notice-content')]' not found.</status>
+</kw>
+<status status="FAIL" start="2025-09-19T22:28:19.178108" elapsed="27.705382">Element with locator 'xpath=//div[contains(@class,'ant-message-notice-content')]' not found.</status>
 </test>
-<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
-<doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="PASS" start="2025-09-16T00:31:59.771771" elapsed="0.000000"/>
-</kw>
-<status status="FAIL" start="2025-09-16T00:31:59.171323" elapsed="0.600448">Suite setup failed:
-Multiple keywords with name 'Open Browser To Login Page' found. Give the full name of the keyword you want to use:
-    notification_keywords.Open Browser To Login Page
-    promotion_keywords.Open Browser To Login Page</status>
+<status status="FAIL" start="2025-09-19T22:28:18.462144" elapsed="28.422345"/>
 </suite>
 <statistics>
 <total>
 <stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="0" fail="1" skip="0">E2E</stat>
-<stat pass="0" fail="1" skip="0">Notification</stat>
-<stat pass="0" fail="1" skip="0">Promotion</stat>
-<stat pass="0" fail="1" skip="0">TC2001</stat>
 </tag>
 <suite>
-<stat name="TC2001" id="s1" pass="0" fail="1" skip="0">TC2001</stat>
+<stat name="TC4007" id="s1" pass="0" fail="1" skip="0">TC4007</stat>
 </suite>
 </statistics>
 <errors>

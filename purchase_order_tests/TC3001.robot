@@ -4,7 +4,7 @@ Resource   ../keywords/purchase_order_keywords.robot
 Resource   ../variables/purchase_order_variables.robot
 
 *** Test Cases ***
-TC4001 Verify Add Product To Purchase Order
+TC3001 Verify Add Product To Purchase Order
     [Documentation]    ตรวจสอบว่าสามารถเพิ่มสินค้าใน Purchase Order ได้
     Open Browser To Login Page
     Login Using Resource

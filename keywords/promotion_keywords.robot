@@ -105,41 +105,51 @@ Input Discounted Price
     Press Keys    id=create-promotion-discounted-price-input    RETURN
     Sleep    0.5s
 
-
-
 Click Submit Promotion
     Wait Until Element Is Visible    id=create-promotion-submit-button    ${TIMEOUT}
     Click Button    id=create-promotion-submit-button
-    ${btn_back}=    Run Keyword And Return Status    Wait Until Element Is Visible    id=create-promotion-button    20s
-    ${ok1}=    Run Keyword And Return Status    Page Should Contain    สร้างโปรโมชั่นสำเร็จ
-    ${ok2}=    Run Keyword And Return Status    Page Should Contain    บันทึกสำเร็จ
-    ${ok3}=    Run Keyword And Return Status    Page Should Contain    สำเร็จ
-    ${row_ok}=    Run Keyword And Return Status    Page Should Contain Element    xpath=//td[contains(text(),'${PROMOTION_NAME}')]
-    Run Keyword Unless    ${ok1} or ${ok2} or ${ok3} or ${row_ok}    Capture Page Screenshot
-    Run Keyword Unless    ${ok1} or ${ok2} or ${ok3} or ${row_ok}    Fail    ไม่พบหลักฐานว่าสร้างโปรโมชั่นสำเร็จ
+
+    # ✅ รอ SweetAlert (Swal2 popup) ขึ้นมา
+    ${swal}=    Run Keyword And Return Status    Wait Until Page Contains Element    css=.swal2-popup    10s
+    IF    ${swal}
+        Page Should Contain    สร้างโปรโมชั่นสำเร็จ
+        Run Keyword And Ignore Error    Click Button    css=.swal2-confirm
+    ELSE
+        Capture Page Screenshot
+        Fail    ไม่พบข้อความยืนยันการสร้างโปรโมชั่น
+    END
+
+    # ✅ รอให้กลับมาที่หน้าหลัก (ปุ่มเพิ่มโปรโมชั่นกลับมาแสดง)
+    Wait Until Element Is Visible    id=create-promotion-button    ${TIMEOUT}
 
 
-# ===== Delete Promotion (TC6003) =====
+
+# ===== Delete Promotion (TC7003) =====
+*** Keywords ***
+
 Open Delete Promotion Modal
-    Wait Until Element Is Visible    xpath=//button[contains(@id,'delete-promotion-button')]    ${TIMEOUT}
+    Wait Until Element Is Visible    xpath=//button[contains(@id,'delete-promotion-button')]    20s
     Click Element    xpath=//button[contains(@id,'delete-promotion-button')]
-    Wait Until Element Is Visible    xpath=//div[contains(@class,'modal')]//button    ${TIMEOUT}
 
 Confirm Delete Promotion
-    # กดปุ่มลบ (สีแดง) ใน modal
-    Click Element    xpath=(//div[contains(@class,'modal')]//button)[1]
-    # ยืนยัน OK (ปุ่มกลาง)
-    Click Element    xpath=(//div[contains(@class,'modal')]//button)[2]
+    # รอ modal confirm ขึ้น
+    Wait Until Page Contains    ${DELETE_CONFIRM_TEXT}    20s
+
+    # กดปุ่ม confirm
+    Click Button    css=.swal2-confirm
+
+    # รอ SweetAlert success (ตรวจ partial text)
+    Wait Until Element Contains    css=.swal2-html-container    โปรโมชั่นถูกลบแล้ว    30s
+
+    # ปิด SweetAlert
+    Click Button    css=.swal2-confirm
+
     
-    # ตรวจผลลัพธ์
-    ${ok1}=    Run Keyword And Return Status    Page Should Contain    ${DELETE_SUCCESS_TEXT}
-    ${ok2}=    Run Keyword And Return Status    Page Should Contain    ลบสำเร็จ
-    ${ok3}=    Run Keyword And Return Status    Page Should Not Contain    ${DELETE_PROMOTION_SEARCH}
-    Run Keyword Unless    ${ok1} or ${ok2} or ${ok3}    Capture Page Screenshot
-    Run Keyword Unless    ${ok1} or ${ok2} or ${ok3}    Fail    ไม่พบหลักฐานว่าลบโปรโมชั่นสำเร็จ
 
 
-# ===== Print Promotions (TC6004) =====
+
+
+# ===== Print Promotions (TC7004) =====
 Open Print Promotions Modal
     Wait Until Element Is Visible    id=${PRINT_BUTTON_ID}    ${TIMEOUT}
     Click Element    id=${PRINT_BUTTON_ID}
@@ -167,29 +177,26 @@ Submit Print Promotions
     Run Keyword Unless    ${ok1} or ${ok2}    Fail    ไม่พบข้อความยืนยันการพิมพ์
 
 
-# ===== Edit Promotion (TC6002) =====
+# ===== Edit Promotion Keywords =====
 Search Promotion By Name
     [Arguments]    ${query}
-    Wait Until Element Is Visible    id=promotion-search-input    ${TIMEOUT}
+    Wait Until Element Is Visible    id=promotion-search-input    20s
     Clear Element Text    id=promotion-search-input
     Input Text    id=promotion-search-input    ${query}
-    Sleep    0.5s
+    Sleep    0.5
 
 Open Edit Promotion Modal
-    Wait Until Element Is Visible    xpath=//button[contains(@id,'edit-promotion-button')]    ${TIMEOUT}
+    Wait Until Element Is Visible    xpath=//button[contains(@id,'edit-promotion-button')]    20s
     Click Element    xpath=//button[contains(@id,'edit-promotion-button')]
-    Wait Until Element Is Visible    id=edit-promotion-name-input    ${TIMEOUT}
-
-Input Edit Promotion Name
-    [Arguments]    ${name}
-    Clear Element Text    id=edit-promotion-name-input
-    Input Text    id=edit-promotion-name-input    ${name}
+    Wait Until Element Is Visible    id=edit-promotion-name-input    20s
 
 Select Edit Promotion Date
     [Arguments]    ${date_type}    ${day}    ${month}    ${year}
     Run Keyword If    '${date_type}'=='start'    Click Element    id=edit-promotion-start-date
     ...    ELSE    Click Element    id=edit-promotion-end-date
-    Wait Until Element Is Visible    css=.react-datepicker    ${TIMEOUT}
+
+    Wait Until Element Is Visible    css=.react-datepicker    20s
+
     FOR    ${i}    IN RANGE    24
         ${current}=    Get Text    css=.react-datepicker__current-month
         ${parts}=      Evaluate    '${current}.split()'
@@ -197,32 +204,35 @@ Select Edit Promotion Date
         ${current_year}=     Set Variable    ${parts[1]}
         Run Keyword If    '${current_month}'=='${month}' and '${current_year}'=='${year}'    Exit For Loop
         Click Element      css=.react-datepicker__navigation--next
-        Sleep    0.5s
+        Sleep    0.5
     END
+
     ${day_locator}=    Set Variable    xpath=//div[contains(@class,"react-datepicker__day") and not(contains(@class,"outside-month")) and normalize-space(text())="${day}"]
     Click Element      ${day_locator}
-    Sleep    0.5s
+    Sleep    0.5
 
-Input Edit Promotion Discounted Price
-    [Arguments]    ${price}
-    Clear Element Text    id=edit-promotion-discounted-price-input
-    Input Text    id=edit-promotion-discounted-price-input    ${price}
-
-Select Edit Promotion Lot
-    [Arguments]    ${lot_locator}
-    Click Element    ${lot_locator}
+    # คลิกนอก modal เพื่อปิด datepicker
+    Click Element    xpath=//body
+    Sleep    0.5
 
 Submit Edit Promotion
-    Click Button    id=create-promotion-submit-button
-    ${ok1}=    Run Keyword And Return Status    Page Should Contain    แก้ไขโปรโมชั่นสำเร็จ
-    ${ok2}=    Run Keyword And Return Status    Page Should Contain    บันทึกสำเร็จ
-    ${ok3}=    Run Keyword And Return Status    Page Should Contain    สำเร็จ
-    ${row_ok}=    Run Keyword And Return Status    Page Should Contain Element    xpath=//td[contains(text(),'${EDIT_PROMOTION_NAME}')]
-    Run Keyword Unless    ${ok1} or ${ok2} or ${ok3} or ${row_ok}    Capture Page Screenshot
-    Run Keyword Unless    ${ok1} or ${ok2} or ${ok3} or ${row_ok}    Fail    ไม่พบหลักฐานว่าแก้ไขโปรโมชั่นสำเร็จ
+    Wait Until Element Is Visible    ${EDIT_PROMOTION_SUBMIT_BUTTON}    20s
+    Scroll Element Into View         ${EDIT_PROMOTION_SUBMIT_BUTTON}
+    Click Button                     ${EDIT_PROMOTION_SUBMIT_BUTTON}
 
-# ===== Negative Test Cases (TC6005-TC6009) =====
-# TC6005: ไม่กรอกชื่อโปรโมชั่น
+    # รอ SweetAlert popup
+    ${swal}=    Run Keyword And Return Status    Wait Until Page Contains Element    css=.swal2-popup    10s
+    IF    ${swal}
+        Page Should Contain    แก้ไขโปรโมชั่นสำเร็จ
+        Run Keyword And Ignore Error    Click Button    css=.swal2-confirm
+    ELSE
+        Capture Page Screenshot
+        Fail    ไม่พบข้อความยืนยันการแก้ไขโปรโมชั่น
+    END
+
+
+# ===== Negative Test Cases (TC7005-TC7009) =====
+# TC7005: ไม่กรอกชื่อโปรโมชั่น
 Input Promotion Name Optional
     [Arguments]    ${name}
     Run Keyword If    '${name}' != '${EMPTY}'    Input Text    id=create-promotion-name-input    ${name}
@@ -241,6 +251,7 @@ Select Lot For Promotion Optional
     [Arguments]    ${lot_locator}
     Run Keyword If    '${lot_locator}' != '${EMPTY}'
     ...    Select Lot For Promotion    ${lot_locator}
+
 
 Input Discounted Price Optional
     [Arguments]    ${discounted_price}

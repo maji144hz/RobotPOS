@@ -47,7 +47,7 @@ ${NOTIFICATION_WINDOW_TITLE}       การแจ้งเตือน
 ${NOTIFICATION_ITEM_COUNT}         11
 ${NOTIFICATION_ITEM_TEXT}          รายการแจ้งเตือน
 ${PO_SEARCH_KEYWORD}               ข้าวโพดหวานกระป๋อง
-${PO_SUPPLIER_NAME}                บริษัท ฟู้ดซัพพลายเออร์ จำกัด
+${PO_SUPPLIER_NAME}                บริษัท ฟู๊ดซัพพลายเออร์ จำกัด
 ${PO_QUANTITY}                     5
 
 # Expected Messages
