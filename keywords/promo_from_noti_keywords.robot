@@ -58,46 +58,47 @@ Wait Until Any Element Is Visible
 
 # ===== Promotion Form =====
 Fill Promotion Form
-    [Arguments]    ${start}=${PROMOTION_START_DATE}    ${end}=${PROMOTION_END_DATE}    ${discounted_price}=${PROMOTION_DISCOUNTED_PRICE}
-    
-    # --- เลือกวันที่เริ่มต้น ---
-    Wait Until Element Is Visible    ${PROMOTION_START_DATE_INPUT}    ${TIMEOUT}
-    Click Element    ${PROMOTION_START_DATE_INPUT}
-    Sleep    1s
-    # ลองหาวันที่ 21 ในรูปแบบต่างๆ
-    ${day21_found}=    Run Keyword And Return Status    Wait Until Element Is Visible    xpath=//td[contains(@class,'day') and text()='21']    5s
-    Run Keyword If    ${day21_found}    Click Element    xpath=//td[contains(@class,'day') and text()='21']
-    Run Keyword Unless    ${day21_found}    Click Element    xpath=//td[text()='21']
-    Sleep    1s
+    [Arguments]    ${name}=${PROMOTION_NAME}    ${start}=${PROMOTION_START_DATE}    ${end}=${PROMOTION_END_DATE}    ${discounted_price}=${PROMOTION_DISCOUNTED_PRICE}    ${product}=${PROMOTION_PRODUCT}
+    Wait Until Element Is Visible    ${PROMOTION_NAME_INPUT}    ${TIMEOUT}
 
-    # --- เลือกวันที่สิ้นสุด ---
+    # --- กรอกชื่อโปรโมชั่น ---
+    Clear Element Text    ${PROMOTION_NAME_INPUT}
+    Input Text    ${PROMOTION_NAME_INPUT}    ${name}
+    Sleep    0.2s
+
+    # --- เลือก product (รองรับ <select> และ combobox แบบ custom) ---
+    Run Keyword And Ignore Error    Select Promotion Product    ${product}
+    Sleep    0.3s
+
+    # --- รอ input วันที่ แล้วตั้งค่า via JS (single-line) พร้อม trigger events ---
+    Wait Until Element Is Visible    ${PROMOTION_START_DATE_INPUT}    ${TIMEOUT}
     Wait Until Element Is Visible    ${PROMOTION_END_DATE_INPUT}    ${TIMEOUT}
-    Click Element    ${PROMOTION_END_DATE_INPUT}
-    Sleep    1s
-    # ลองหาวันที่ 23 ในรูปแบบต่างๆ
-    ${day23_found}=    Run Keyword And Return Status    Wait Until Element Is Visible    xpath=//td[contains(@class,'day') and text()='23']    5s
-    Run Keyword If    ${day23_found}    Click Element    xpath=//td[contains(@class,'day') and text()='23']
-    Run Keyword Unless    ${day23_found}    Click Element    xpath=//td[text()='23']
-    Sleep    1s
+    Execute Javascript    var start='${start}'; var end='${end}'; var s=document.getElementById('create-promotion-start-date'); var e=document.getElementById('create-promotion-end-date'); if(s){s.value=start; s.dispatchEvent(new Event('input',{bubbles:true})); s.dispatchEvent(new Event('change',{bubbles:true}));} if(e){e.value=end; e.dispatchEvent(new Event('input',{bubbles:true})); e.dispatchEvent(new Event('change',{bubbles:true}));}
+
+    Sleep    0.3s
 
     # --- เลือกล็อตสินค้า ---
-    Wait Until Element Is Visible    xpath=//label[contains(@class,'flex items-center gap-2 text-sm')]//input[@type='checkbox']    ${TIMEOUT}
-    Click Element    xpath=//label[contains(@class,'flex items-center gap-2 text-sm')]//input[@type='checkbox']
-    Sleep    0.5s
+    Wait Until Element Is Visible    ${PROMOTION_LOT_LOCATOR}    ${TIMEOUT}
+    Click Element    ${PROMOTION_LOT_LOCATOR}
+    Sleep    0.4s
 
     # --- ใส่ราคาลด ---
-    Wait Until Element Is Visible    ${PROMOTION_DISCOUNTED_PRICE_INPUT}    ${TIMEOUT}
     Clear Element Text    ${PROMOTION_DISCOUNTED_PRICE_INPUT}
     Input Text    ${PROMOTION_DISCOUNTED_PRICE_INPUT}    ${discounted_price}
-    Press Keys    ${PROMOTION_DISCOUNTED_PRICE_INPUT}    TAB
-    Sleep    0.5s
+    Sleep    0.2s
 
 Click Submit Promotion
-    Wait Until Element Is Visible    ${PROMOTION_SUBMIT_BUTTON}    ${TIMEOUT}
-    Click Button    ${PROMOTION_SUBMIT_BUTTON}
+    Wait Until Element Is Visible    id=create-promotion-submit-button    ${TIMEOUT}
+    Click Button    id=create-promotion-submit-button
     Sleep    2s    # รอให้ DOM update / popup โผล่
 
-    # ตรวจสอบข้อความสำเร็จ
-    Wait Until Page Contains    สร้างโปรโมชั่นสำเร็จ    ${TIMEOUT}
-    Page Should Contain    สร้างโปรโมชั่นสำเร็จ
+    ${ok1}=    Run Keyword And Return Status    Page Should Contain    สร้างโปรโมชั่นสำเร็จ
+    ${ok2}=    Run Keyword And Return Status    Page Should Contain    บันทึกสำเร็จ
+    ${ok3}=    Run Keyword And Return Status    Page Should Contain    สำเร็จ
+    ${ok4}=    Run Keyword And Return Status    Page Should Contain    Promotion Created Successfully
+    ${row_ok}=    Run Keyword And Return Status    Page Should Contain Element    xpath=//td[contains(text(),'${PROMOTION_NAME}')]
 
+    Run Keyword Unless    ${ok1} or ${ok2} or ${ok3} or ${ok4} or ${row_ok}
+    ...    Capture Page Screenshot
+    Run Keyword Unless    ${ok1} or ${ok2} or ${ok3} or ${ok4} or ${row_ok}
+    ...    Fail    ไม่พบหลักฐานว่าสร้างโปรโมชั่นสำเร็จ

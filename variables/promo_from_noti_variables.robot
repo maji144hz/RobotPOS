@@ -6,10 +6,10 @@ ${VALID_PASSWORD}     123
 ${TIMEOUT}            20s
 
 # --- Notification Page Elements ---
-${NOTIFICATION_BELL_ICON}          xpath=//button[@class="btn btn-ghost btn-circle relative group" and @aria-label="แจ้งเตือน"]
+${NOTIFICATION_BELL_ICON}          xpath=//*[@id="root"]/div/div/div/div[2]/div[1]/button
 ${FILTER_EXPIRING_BUTTON}          id=notification-filter-expiring-button
 ${PROMOTION_ITEM}                  xpath=//*[contains(normalize-space(.),"ข้าวกล้องหอมมะลิ 1 กก.")]
-${PROMOTION_ACTION_ICON}           id=notification-action-button-0
+${PROMOTION_ACTION_ICON}           id=notification-action-button-1
 
 # --- Promotion Form Elements ---
 ${PROMOTION_NAME_INPUT}            id=create-promotion-name-input
@@ -30,7 +30,7 @@ ${PROMOTION_ROW_LOCATOR}           xpath=//td[contains(normalize-space(.),'${PRO
 
 # --- Test Data  ---
 ${PROMOTION_NAME}                  โปรโมชั่น ข้าวกล้องหอมมะลิ 1 กก.
-${PROMOTION_START_DATE}            21/09/2025
-${PROMOTION_END_DATE}              23/09/2025
+${PROMOTION_START_DATE}            2025-09-01
+${PROMOTION_END_DATE}              2025-09-21
 ${PROMOTION_PRODUCT}               ข้าวกล้องหอมมะลิ 1 กก.
 ${PROMOTION_DISCOUNTED_PRICE}      40
