@@ -10,7 +10,6 @@ TC6001 Create Promotion From Notification
     Login Using Resource
     Open Notification Panel
     Filter Expiring Notifications
-    Select Promotion Item
     Click Promotion Action Icon
     Fill Promotion Form
     Click Submit Promotion
