@@ -39,7 +39,7 @@ Go To Receive Product Page
     Wait Until Element Is Visible    ${BTN_RECEIVE}   ${TIMEOUT}
     Click Element                    ${BTN_RECEIVE}
 
-# ===== Action: View Receipt =====
+# ===== 4001: ดูรายละเอียดใบรับสินค้า =====
 Search And View Receipt
     [Arguments]    ${receipt_number}
     Wait Until Element Is Visible    ${RECEIPT_SEARCH_INPUT}    ${TIMEOUT}
@@ -48,4 +48,41 @@ Search And View Receipt
     Sleep    2s
     Wait Until Element Is Visible    ${VIEW_RECEIPT_BUTTON}    ${TIMEOUT}
     Click Element                    ${VIEW_RECEIPT_BUTTON}
-    Sleep    3s    # รอหน้าแสดงรายละเอียดโหลดให้ครบ
+    Sleep    2s    # รอหน้าแสดงรายละเอียดโหลด
+
+# ===== 4002: อัพเดทและรับสินค้า =====
+Search And Select Purchase Order
+    [Arguments]    ${po_number}
+    Wait Until Element Is Visible    ${RECEIPT_SEARCH_INPUT}    ${TIMEOUT}
+    Clear Element Text               ${RECEIPT_SEARCH_INPUT}
+    Input Text                       ${RECEIPT_SEARCH_INPUT}    ${po_number}
+    Sleep    3s    # เพิ่มเวลาให้ระบบแสดงรายการ PO
+    Wait Until Element Is Visible    xpath=//*[text()='${po_number}']    ${TIMEOUT}
+    Sleep    1s    # รอให้ element โผล่เต็มที่
+    Click Element                    xpath=//*[text()='${po_number}']
+    Sleep    1s
+    Wait Until Element Is Visible    ${BTN_UPDATE_DELIVERY}    ${TIMEOUT}
+    Click Button                     ${BTN_UPDATE_DELIVERY}
+    Sleep    1s    # รอ form แสดง
+
+Update Delivery Item
+    [Arguments]    ${delivered_locator}    ${delivered_qty}    ${expiration_locator}    ${expiration_date}
+    Wait Until Element Is Visible    ${delivered_locator}    ${TIMEOUT}
+    Sleep    1s
+    Clear Element Text    ${delivered_locator}
+    Input Text            ${delivered_locator}    ${delivered_qty}
+    Sleep    0.5s
+
+    Wait Until Element Is Visible    ${expiration_locator}    ${TIMEOUT}
+    Sleep    1s
+    Clear Element Text    ${expiration_locator}
+    Input Text            ${expiration_locator}    ${expiration_date}
+    Sleep    0.5s
+
+Confirm Update Delivery
+    Wait Until Element Is Visible    ${BTN_CONFIRM_UPDATE}    ${TIMEOUT}
+    Sleep    1s
+    Click Button                     ${BTN_CONFIRM_UPDATE}
+    Sleep    2s
+
+
