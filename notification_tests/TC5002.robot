@@ -30,4 +30,4 @@ TC5002_การแจ้งเตือนสินค้าหมดอาย�
 
     # ยืนยันตัดจำหน่าย และตรวจข้อความสำเร็จ
     Confirm Disposal
-    Verify Disposal Success
+    Check Disposal Success Present

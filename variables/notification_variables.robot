@@ -31,9 +31,10 @@ ${FILTER_LOWSTOCK_BUTTON}          id=notification-filter-lowstock-button
 # Disposal (ตัดจำหน่าย)
 ${DISPOSE_ACTION_BUTTON}           id=notification-action-button-0
 ${CONFIRM_DISPOSE_BUTTON}          css=button.swal2-confirm
+${SWAL_HTML}                       css=.swal2-html-container
 
 # ข้อความสำเร็จ
-${DISPOSE_SUCCESS_TEXT}         สร้างออเดอร์ตัดจำหน่ายสินค้าสำเร็จเรียบร้อย
+${DISPOSE_SUCCESS_CORE}         สร้างออเดอร์ตัดจำหน่ายสินค้าสำเร็จเรียบร้อย
 
 # Create PO From Lowstock
 ${LOWSTOCK_ACTION_BUTTON}          id=notification-action-button-0

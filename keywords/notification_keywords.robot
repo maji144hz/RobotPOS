@@ -99,26 +99,18 @@ Filter Expired Notifications
     Click Element    ${FILTER_EXPIRED_BUTTON}
 
 Select First Notification For Disposal
-    [Documentation]    เลือกรายการแจ้งเตือนแรกสำหรับตัดจำหน่าย กดตกลงใน popup และตรวจสอบข้อความสำเร็จ
-
-    # รอปุ่มตัดจำหน่ายของรายการแรกพร้อมคลิก
-    Wait Until Element Exists    xpath=//button[contains(@id,'notification-action-button')][1]    ${TIMEOUT}
-    Wait Until Element Is Visible    xpath=//button[contains(@id,'notification-action-button')][1]    ${TIMEOUT}
-    Wait Until Element Is Enabled    xpath=//button[contains(@id,'notification-action-button')][1]    ${TIMEOUT}
-    Scroll Element Into View         xpath=//button[contains(@id,'notification-action-button')][1]
-    Click Element                    xpath=//button[contains(@id,'notification-action-button')][1]
-    Sleep                            1s
+    Wait Until Element Is Visible    ${DISPOSE_ACTION_BUTTON}    ${TIMEOUT}
+    Scroll Element Into View          ${DISPOSE_ACTION_BUTTON}
+    Click Element                     ${DISPOSE_ACTION_BUTTON}
 
 Confirm Disposal
-    Wait Until Element Exists    css=button.swal2-confirm    ${TIMEOUT}
-    Wait Until Element Is Visible   css=button.swal2-confirm    ${TIMEOUT}
-    Wait Until Element Is Enabled   css=button.swal2-confirm    ${TIMEOUT}
-    Scroll Element Into View         css=button.swal2-confirm
-    Click Element                    css=button.swal2-confirm
-    Sleep                            0.5s
+    Wait Until Element Is Visible    ${CONFIRM_DISPOSE_BUTTON}    10s
+    Click Element    ${CONFIRM_DISPOSE_BUTTON}
+    Sleep    1s
 
-Verify Disposal Success
-    Wait Until Page Contains    ${DISPOSE_SUCCESS_TEXT}    10s
+Check Disposal Success Present
+    Wait Until Element Is Visible    css=div.swal2-popup    15s
+    Element Should Contain           css=div.swal2-popup    สร้างออเดอร์ตัดจำหน่ายสินค้าสำเร็จเรียบร้อย
 
 
 # ===== Actions สำหรับ TC5003  =====
