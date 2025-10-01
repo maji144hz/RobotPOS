@@ -98,6 +98,29 @@ Filter Expired Notifications
     Wait Until Element Is Visible    ${FILTER_EXPIRED_BUTTON}    ${TIMEOUT}
     Click Element    ${FILTER_EXPIRED_BUTTON}
 
+Select First Notification For Disposal
+    [Documentation]    เลือกรายการแจ้งเตือนแรกสำหรับตัดจำหน่าย กดตกลงใน popup และตรวจสอบข้อความสำเร็จ
+
+    # รอปุ่มตัดจำหน่ายของรายการแรกพร้อมคลิก
+    Wait Until Element Exists    xpath=//button[contains(@id,'notification-action-button')][1]    ${TIMEOUT}
+    Wait Until Element Is Visible    xpath=//button[contains(@id,'notification-action-button')][1]    ${TIMEOUT}
+    Wait Until Element Is Enabled    xpath=//button[contains(@id,'notification-action-button')][1]    ${TIMEOUT}
+    Scroll Element Into View         xpath=//button[contains(@id,'notification-action-button')][1]
+    Click Element                    xpath=//button[contains(@id,'notification-action-button')][1]
+    Sleep                            1s
+
+Confirm Disposal
+    Wait Until Element Exists    css=button.swal2-confirm    ${TIMEOUT}
+    Wait Until Element Is Visible   css=button.swal2-confirm    ${TIMEOUT}
+    Wait Until Element Is Enabled   css=button.swal2-confirm    ${TIMEOUT}
+    Scroll Element Into View         css=button.swal2-confirm
+    Click Element                    css=button.swal2-confirm
+    Sleep                            0.5s
+
+Verify Disposal Success
+    Wait Until Page Contains    ${DISPOSE_SUCCESS_TEXT}    10s
+
+
 # ===== Actions สำหรับ TC5003  =====
 Filter Expiring Notifications
     ${by_btn}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${FILTER_EXPIRING_BUTTON}    2s
@@ -168,17 +191,5 @@ Submit Purchase Order And Verify
     ${ok2}=    Run Keyword And Return Status    Page Should Contain    สำเร็จ
     Should Be True    ${ok1} or ${ok2}    ไม่พบข้อความว่าสร้างใบสั่งซื้อสำเร็จ
 
-# ===== Negative Flow สำหรับ TC5005 =====
-Clear Quantity And Submit Expect Error
-    [Arguments]    ${expected_error}=${PO_ERROR_TEXT}
-    Wait Until Element Is Visible    ${PO_QUANTITY_INPUT}    ${TIMEOUT}
-    Clear Element Text    ${PO_QUANTITY_INPUT}
-    Click Element    ${PO_SUBMIT_BUTTON}
-    Sleep    0.5s
-    ${success}=    Run Keyword And Return Status    Page Should Contain    ${PURCHASE_SUCCESS_TEXT}
-    ${form_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${PO_SUBMIT_BUTTON}
-    ${error_seen}=    Run Keyword And Return Status    Page Should Contain    ${expected_error}
-    Should Not Be True    ${success}    ไม่ควรสำเร็จเมื่อจำนวนว่าง
-    Should Be True     ${form_visible}    แบบฟอร์มควรยังเปิดอยู่
-    Run Keyword If    not ${error_seen}    Log    ไม่พบข้อความ error ที่คาดหวัง: ${expected_error}
+
 

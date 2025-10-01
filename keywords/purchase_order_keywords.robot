@@ -17,12 +17,6 @@ Login Using Resource
     Sleep    1s
 
 
-Go To Login Page
-    Go To    ${BASE_URL}/
-    Wait Until Element Is Visible    css=input[name='username']    ${TIMEOUT}
-    Wait Until Element Is Visible    css=input[name='password']    ${TIMEOUT}
-    Wait Until Element Is Visible    css=button[type='submit']     ${TIMEOUT}
-
 Input Username
     [Arguments]    ${username}
     Input Text    css=input[name='username']    ${username}
@@ -64,7 +58,6 @@ Fill PO Quantity And Unit
         Capture Page Screenshot
         Fail    กรอกจำนวนไม่สำเร็จ: ค่าปัจจุบันคือ ${filled}
     END
-
 
 Fill Purchase Price
     [Arguments]    ${price}=${PO_PRICE}
@@ -128,7 +121,6 @@ Search And Open PO For TC3003
     Sleep                             1s
     Click Element                    ${PO_EDIT_BUTTON}
 
-
 Fill Edited PO Price For TC3003
     [Arguments]    ${price}
     Wait Until Element Is Visible    ${PO_PRICE_INPUT_EDIT}    30s
@@ -138,7 +130,6 @@ Fill Edited PO Price For TC3003
     Input Text                       ${PO_PRICE_INPUT_EDIT}    ${price}
     Press Keys                       ${PO_PRICE_INPUT_EDIT}    TAB
     Sleep                             0.5s
-
 
 Submit Edited PO And Verify For TC3003
     Wait Until Element Is Visible    ${PO_SUBMIT_BUTTON_EDIT}    20s
@@ -178,10 +169,10 @@ Search And Delete PO For TC3005
     Clear Element Text               ${PO_SEARCH_INPUT}
     Input Text                       ${PO_SEARCH_INPUT}    ${po_number}
     Sleep                             1s
-    # กดปุ่มดูรายละเอียดใบสั่ง (view order) ในรายการ PO
-    ${view_btn}=    Set Variable    xpath=//button[contains(@id,'po-view-order-button')]
-    Wait Until Element Is Visible    ${view_btn}    10s
-    Click Element                    ${view_btn}
+    # กดปุ่มลบใบสั่ง (view order) ในรายการ PO
+    ${delete_btn}=    Set Variable    xpath=//*[@id="po-delete-button-68dd27d8fae9ddcd77bab9c7"]
+    Wait Until Element Is Visible    ${delete_btn}    10s
+    Click Element                    ${delete_btn}
 
 Confirm Delete PO For TC3005
     # รอให้ SweetAlert2 modal โผล่
@@ -211,7 +202,7 @@ Submit PO And Verify Error TC3006
     Wait Until Page Contains         ${error_message}         ${TIMEOUT}
 
 # ===== Negative Keywords: TC3007 =====
-Fill PO Quantity TC4007
+Fill PO Quantity TC3007
     [Arguments]    ${qty}
     Wait Until Element Is Visible    ${PO_QUANTITY_INPUT}    ${TIMEOUT}
     Scroll Element Into View         ${PO_QUANTITY_INPUT}

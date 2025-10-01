@@ -32,6 +32,9 @@ ${FILTER_LOWSTOCK_BUTTON}          id=notification-filter-lowstock-button
 ${DISPOSE_ACTION_BUTTON}           id=notification-action-button-0
 ${CONFIRM_DISPOSE_BUTTON}          css=button.swal2-confirm
 
+# ข้อความสำเร็จ
+${DISPOSE_SUCCESS_TEXT}         สร้างออเดอร์ตัดจำหน่ายสินค้าสำเร็จเรียบร้อย
+
 # Create PO From Lowstock
 ${LOWSTOCK_ACTION_BUTTON}          id=notification-action-button-0
 ${CREATE_PO_BUTTON}                id=create-purchase-order-button

@@ -57,7 +57,7 @@ ${EDIT_SUCCESS_TEXT}    สำเร็จ แก้ไขใบสั่งซ�
 
 # --- Negative Test Case: TC3003 (แก้ไขราคาซื้อ) ---
 ${TC3003_PO_NUMBER}         36
-${TC3003EDIT_PRICE}        155
+${TC3003EDIT_PRICE}        200
 ${TC3003EDIT_QUANTITY}     7
 ${TC3003EDIT_UNIT}         แพ็ค
 ${TC3003EDIT_SUPPLIER}     บริษัท ฟู้ดซัพพลาย จำกัด
@@ -73,7 +73,7 @@ ${TC3004EDIT_SUCCESS_TEXT}    สำเร็จ แก้ไขใบสั่�
 
 
 # --- Negative Test Case: TC3005 (ลบใบสั่งของ) ---
-${TC3005_PO_NUMBER}             39
+${TC3005_PO_NUMBER}             53
 ${TC3005_DELETE_SUCCESS_TEXT}   สำเร็จ ลบใบสั่งซื้อสำเร็จ
 
 # --- Negative Test Case: TC3006 (ไม่เลือกซัพพลายเออร์) ---

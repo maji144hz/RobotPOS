@@ -14,14 +14,14 @@ ${TC11001_PASSWORD}           ${VALID_PASSWORD}
 # Sales History Page
 ${TC11001_SALES_HISTORY_MENU}    xpath=//*[@id="root"]/div/aside/div/nav/div/a[3]
 ${TC11001_ORDER_TABLE}           xpath=//*[@id="root"]/div/div/main/div/div/div/div[3]/div/table
-${TC11001_ORDER_ROW}             xpath=//*[@id="root"]/div/div/main/div/div/div/div[3]/div[1]/table/tbody/tr[1]/td[1]
+${TC11001_ORDER_ROW}             xpath=//*[@id="root"]/div/div/main/div/div/div/div[3]/div[1]/table/tbody/tr[4]/td[1]
 ${TC11001_ORDER_DETAIL_MODAL}    xpath=//*[@id="root"]/div/div/main/div/div/div/div[4]/div/div[1]
 
 # Test Data
-${TC11001_ORDER_ID}              ORD2509156866918
+${TC11001_ORDER_ID}              ORD2510016866918
 ${TC11001_ORDER_DATE}            15/9/2568
 ${TC11001_ORDER_STATUS}          ขายสำเร็จ
-${TC11001_ORDER_TOTAL}           56  บาท
+${TC11001_ORDER_TOTAL}           60  บาท
 ${TC11001_ORDER_ITEMS_COUNT}     1 รายการ
 ${TC11001_PAYMENT_METHOD}        BankTransfer
 ${TC11001_AMOUNT_RECEIVED}       100  บาท
@@ -42,13 +42,13 @@ ${TC11002_PASSWORD}           ${VALID_PASSWORD}
 # Sales History Page
 ${TC11002_SALES_HISTORY_MENU}    xpath=//*[@id="root"]/div/aside/div/nav/div/a[3]
 ${TC11002_ORDER_ROW}             xpath=//*[@id="root"]/div/div/main/div/div/div/div[3]/div/table/tbody/tr[1]/td[1]
-${TC11002_EDIT_BUTTON}           xpath=//*[@id="root"]/div/div/main/div/div/div/div[4]/div/div[2]/div[2]/div[2]/div/div/div/div/div[5]/button
+${TC11002_EDIT_BUTTON}           xpath=//button[normalize-space(.)='แก้ไข']
 ${TC11002_CONTINUE_BUTTON}       xpath=/html/body/div[2]/div/div[6]/button[1]
 ${TC11002_PRICE_INPUT}           xpath=//*[@id="root"]/div/div/main/div/div/div/div[5]/div/div[2]/div[3]/input
 ${TC11002_SAVE_CHANGES_BUTTON}   xpath=//*[@id="root"]/div/div/main/div/div/div/div[5]/div/div[2]/div[5]/button[2]
 
 # Test Data
-${TC11002_ORDER_ID}              ORD2509156866918
+${TC11002_ORDER_ID}              ORD2510016866918
 ${TC11002_PRODUCT_NAME}          น้ำตาลทรายขาว 1 กก.
 ${TC11002_CURRENT_QUANTITY}      2 แพ็ค
 ${TC11002_CURRENT_PRICE}         28 บาท
@@ -75,7 +75,7 @@ ${TC11003_PASSWORD}           ${VALID_PASSWORD}
 # Sales History Page (ใช้ locators เดียวกันกับ TC11002)
 ${TC11003_SALES_HISTORY_MENU}    xpath=//*[@id="root"]/div/aside/div/nav/div/a[3]
 ${TC11003_ORDER_ROW}             xpath=//*[@id="root"]/div/div/main/div/div/div/div[3]/div/table/tbody/tr[1]/td[1]
-${TC11003_EDIT_BUTTON}           xpath=//*[@id="root"]/div/div/main/div/div/div/div[4]/div/div[2]/div[2]/div[2]/div[1]/div/div/div/div[5]/button
+${TC11003_EDIT_BUTTON}           xpath=//button[normalize-space(.)='แก้ไข']
 ${TC11003_CONTINUE_BUTTON}       xpath=/html/body/div[2]/div/div[6]/button[1]
 ${TC11003_PRICE_INPUT}           xpath=//*[@id="root"]/div/div/main/div/div/div/div[5]/div/div[2]/div[3]/input
 ${TC11003_SAVE_CHANGES_BUTTON}   xpath=//*[@id="root"]/div/div/main/div/div/div/div[5]/div/div[2]/div[5]/button[2]
