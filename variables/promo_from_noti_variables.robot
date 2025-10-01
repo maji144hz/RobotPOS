@@ -8,8 +8,8 @@ ${TIMEOUT}            20s
 # --- Notification Page Elements ---
 ${NOTIFICATION_BELL_ICON}          xpath=//*[@id="root"]/div/div/div/div[2]/div[1]/button
 ${FILTER_EXPIRING_BUTTON}          id=notification-filter-expiring-button
-${PROMOTION_ITEM}                  xpath=//*[contains(normalize-space(.),"ข้าวกล้องหอมมะลิ 1 กก.")]
-${PROMOTION_ACTION_ICON}           id=notification-action-button-1
+${PROMOTION_ITEM}                  xpath=//*[contains(normalize-space(.),"ไวตามิ้ลค์ 300 มล.")]
+${PROMOTION_ACTION_ICON}           id=notification-action-button-0
 
 # --- Promotion Form Elements ---
 ${PROMOTION_NAME_INPUT}            id=create-promotion-name-input
@@ -29,8 +29,8 @@ ${PROMOTION_SUCCESS_MSG_3}         xpath=//div[contains(normalize-space(.),'ส�
 ${PROMOTION_ROW_LOCATOR}           xpath=//td[contains(normalize-space(.),'${PROMOTION_NAME}')]
 
 # --- Test Data  ---
-${PROMOTION_NAME}                  โปรโมชั่น ข้าวกล้องหอมมะลิ 1 กก.
+${PROMOTION_NAME}                 โปรโมชั่น ไวตามิ้ลค์ 300 มล.
 ${PROMOTION_START_DATE}            2025-09-01
 ${PROMOTION_END_DATE}              2025-09-21
-${PROMOTION_PRODUCT}               ข้าวกล้องหอมมะลิ 1 กก.
+${PROMOTION_PRODUCT}               ไวตามิ้ลค์ 300 มล.
 ${PROMOTION_DISCOUNTED_PRICE}      40

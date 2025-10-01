@@ -30,7 +30,7 @@ ${EDIT_PROMOTION_END_YEAR}            2025
 ${EDIT_PROMOTION_SUBMIT_BUTTON}       id=edit-promotion-submit-button
 
 # --- Delete Promotion (TC7003) ---
-${DELETE_PROMOTION_SEARCH}      Sale คุ้มสุด31
+${DELETE_PROMOTION_SEARCH}      Sale คุ้มสุด5
 ${DELETE_CONFIRM_TEXT}          คุณแน่ใจหรือไม่?
 ${DELETE_SUCCESS_TEXT}          โปรโมชันนี้ถูกลบแล้ว
 

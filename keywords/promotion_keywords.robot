@@ -144,35 +144,6 @@ Confirm Delete Promotion
     # ปิด SweetAlert
     Click Button    css=.swal2-confirm
 
-    
-
-
-# ===== Print Promotions (TC7004) =====
-Open Print Promotions Modal
-    Wait Until Element Is Visible    id=${PRINT_BUTTON_ID}    ${TIMEOUT}
-    Click Element    id=${PRINT_BUTTON_ID}
-    # รอ modal ตั้งค่าปริ้น
-    Wait Until Element Is Visible    xpath=//div[contains(@class,'modal')]    ${TIMEOUT}
-
-Configure Print Options
-    [Arguments]    ${pages}=${PRINT_PAGE_COUNT}    ${per_page}=${PRINT_PER_PAGE}    ${summary}=${PRINT_LAYOUT_SUMMARY}    ${include_active}=${PRINT_INCLUDE_ACTIVE}    ${include_expired}=${PRINT_INCLUDE_EXPIRED}
-    # เลือกจำนวนบาร์โค้ดต่อหน้า
-    Click Element    xpath=(//*[@id='root']//div/div/main/div/div/div[3]/div/div[1]/div/button[2])[1]
-    # ตัวอย่างนี้ใช้คลิกตำแหน่งตามสเปก ถ้าหน้าเปลี่ยนจะปรับได้
-    # สลับตัวเลือกแบบสรุป/รวมรายการ
-    Run Keyword If    ${summary}    Click Element    xpath=//*[@id='root']//div[3]//div[2]//button[2]
-    # ตัวเลือกสถานะที่ต้องการพิมพ์ (เชิงสัญลักษณ์)
-    Run Keyword If    ${include_active}     No Operation
-    Run Keyword If    ${include_expired}    No Operation
-
-Submit Print Promotions
-    # ปุ่ม "เริ่มพิมพ์" สีเขียวใน modal
-    Click Element    xpath=//button[contains(text(),'เริ่มพิมพ์')]
-    # รอระบบประมวลผล และตรวจข้อความยืนยัน
-    ${ok1}=    Run Keyword And Return Status    Page Should Contain    เริ่มยืนยันการพิมพ์
-    ${ok2}=    Run Keyword And Return Status    Page Should Contain    ยืนยันการพิมพ์สำเร็จ
-    Run Keyword Unless    ${ok1} or ${ok2}    Capture Page Screenshot
-    Run Keyword Unless    ${ok1} or ${ok2}    Fail    ไม่พบข้อความยืนยันการพิมพ์
 
 
 # ===== Edit Promotion Keywords =====
